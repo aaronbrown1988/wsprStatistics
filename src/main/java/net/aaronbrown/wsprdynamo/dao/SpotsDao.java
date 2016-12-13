@@ -1,14 +1,17 @@
 package net.aaronbrown.wsprdynamo.dao;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodbv2.document.DynamoDB;
-import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.*;
+import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.model.*;
 import net.aaronbrown.wsprdynamo.dto.WSPRSpotDTO;
 import net.aaronbrown.wsprdynamo.models.WSPRSpot;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
 
 @Component
 public class SpotsDao {
@@ -31,6 +34,40 @@ public class SpotsDao {
             table = createTable(dynamoDB, tableName);
         }
     }
+
+
+    public List<WSPRSpot> getSpotsForCall(String callsign ){
+
+        List<WSPRSpot> results = new ArrayList<>();
+        HashMap<String, String> nameMap = new HashMap<String, String>();
+        nameMap.put("#call", "callsign");
+
+        HashMap<String, Object> valueMap = new HashMap<String, Object>();
+        valueMap.put(":call", callsign);
+        QuerySpec querySpec = new QuerySpec()
+                .withKeyConditionExpression("#call = :call ")
+                .withNameMap(nameMap)
+                .withValueMap(valueMap);
+
+        ItemCollection<QueryOutcome> items = null;
+        Iterator<Item> iterator = null;
+        Item item = null;
+
+        try {
+            items = table.query(querySpec);
+            iterator = items.iterator();
+            while (iterator.hasNext()) {
+                item = iterator.next();
+                results.add(WSPRSpotDTO.convertToSpot(item));
+            }
+
+        } catch (Exception e) {
+            System.err.println("Unable to query for spots by callsign");
+            System.err.println(e.getMessage());
+        }
+        return results;
+    }
+
 
     private Table createTable(DynamoDB dynamoDB, String tableName) {
         try {

@@ -1,0 +1,39 @@
+
+<form>
+    <label for="callsign">Callsign:</label>
+    <input id="callsign" ng-model="searchCtrl.callsign">
+    <button ng-click="searchCtrl.search()">Search</button>
+</form>
+
+<table>
+    <thead>
+    <th>SpoId</th>
+    <th>Callsign</th>
+    <th>Reporter</th>
+    <th>ReportersLocator</th>
+    <th>SNR</th>
+    <th>Frequency</th>
+    <th>TxLocator</th>
+    <th>txPower</th>
+    <th>Distance</th>
+    <th>Azimuth</th>
+    <th>Band</th>
+    </thead>
+
+    <tr ng-repeat="spot in searchCtrl.data">
+        <td>{{spot.spotID}}</td>
+        <td>{{spot.callsign}}</td>
+        <td>{{spot.reporter}}</td>
+        <td>{{spot.reportersLocation}}</td>
+        <td>{{spot.snr}}</td>
+        <td>{{spot.frequency}}</td>
+        <td>{{spot.txLocation}}</td>
+        <td>{{spot.txPower}}</td>
+        <td>{{spot.distance}}</td>
+        <td>{{spot.azimuth}}</td>
+        <td>{{spot.Band}}</td>
+
+
+
+    </tr>
+</table>

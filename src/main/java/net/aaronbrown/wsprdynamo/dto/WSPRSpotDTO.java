@@ -23,4 +23,21 @@ public class WSPRSpotDTO {
 //        .with("version",currentSpot.getVersion()!=null&&!currentSpot.getVersion().isEmpty()?currentSpot.getVersion(): " ")
                 .with("code", !currentSpot.getCode().isEmpty() ? currentSpot.getCode() : " ");
     }
+
+    public static WSPRSpot convertToSpot(Item item) {
+        WSPRSpot spot = new WSPRSpot();
+        spot.setCallsign(item.getString("callsign"));
+        spot.setSpotID(item.getLong("spotID"));
+        spot.setReporter(item.getString("reporter"));
+        spot.setReporterslocator(item.getString("reportersLocation"));
+        spot.setSnr(item.getInt("snr"));
+        spot.setFrequency(item.getDouble("frequency"));
+        spot.setTxLocator(item.getString("txLocator"));
+        spot.setTxPower(item.getDouble("txPower"));
+        spot.setDistance(item.getDouble("distance"));
+        spot.setAzimuth(item.getDouble("azimuth"));
+        spot.setBand(item.getInt("band"));
+        spot.setCode(item.getString("code"));
+        return spot;
+    }
 }

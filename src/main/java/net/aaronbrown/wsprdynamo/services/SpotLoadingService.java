@@ -33,7 +33,7 @@ public class SpotLoadingService {
     public List<Thread> processAll() {
         List<Thread> workers = new ArrayList<>();
         Integer counter = 1;
-        File folder = new File("C:\\Users\\aaron\\Downloads\\spots2016");
+        File folder = new File("/home/aaron/Downloads/");
         List<File> listOfFiles = Arrays.stream(folder.listFiles()).filter(p -> p.getName().contains("wsprspots") && p.getName().contains("zip")).collect(Collectors.toList());
         for (File file : listOfFiles) {
             if (file.getName().contains("wsprspots")) {
@@ -57,7 +57,7 @@ public class SpotLoadingService {
         Integer counter = 0;
         Date start = new Date();
         try {
-            ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream("C:\\Users\\aaron\\Downloads\\spots2016\\" + filename));
+            ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream("/home/aaron/Downloads/" + filename));
             zipInputStream.getNextEntry();
             Reader in = new InputStreamReader(zipInputStream);
             Iterable<CSVRecord> records = CSVFormat.RFC4180.parse(in);
