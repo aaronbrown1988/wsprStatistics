@@ -8,9 +8,6 @@ import net.aaronbrown.wsprdynamo.dto.WSPRSpotDTO;
 import net.aaronbrown.wsprdynamo.models.WSPRSpot;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.*;
 
 @Component
@@ -34,7 +31,6 @@ public class SpotsDao {
             table = createTable(dynamoDB, tableName);
         }
     }
-
 
     public List<WSPRSpot> getSpotsForCall(String callsign ){
 
