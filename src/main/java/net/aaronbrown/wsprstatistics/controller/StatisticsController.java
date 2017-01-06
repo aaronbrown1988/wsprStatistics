@@ -1,6 +1,6 @@
-package net.aaronbrown.wsprdynamo.controller;
+package net.aaronbrown.wsprstatistics.controller;
 
-import net.aaronbrown.wsprdynamo.services.StatisticsService;
+import net.aaronbrown.wsprstatistics.services.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

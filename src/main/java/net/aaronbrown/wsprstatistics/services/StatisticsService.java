@@ -1,7 +1,7 @@
-package net.aaronbrown.wsprdynamo.services;
+package net.aaronbrown.wsprstatistics.services;
 
-import net.aaronbrown.wsprdynamo.dao.SpotsDao;
-import net.aaronbrown.wsprdynamo.models.WSPRSpot;
+import net.aaronbrown.wsprstatistics.dao.SpotsDao;
+import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

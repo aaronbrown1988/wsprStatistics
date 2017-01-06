@@ -1,11 +1,8 @@
-package net.aaronbrown.wsprdynamo.services;
+package net.aaronbrown.wsprstatistics.services;
 
-import com.amazonaws.services.dynamodbv2.document.Table;
-import net.aaronbrown.wsprdynamo.dao.SpotsDao;
-import net.aaronbrown.wsprdynamo.dto.CSVWSPRSpotDTO;
-import net.aaronbrown.wsprdynamo.dto.WSPRSpotDTO;
-import net.aaronbrown.wsprdynamo.models.WSPRSpot;
-import net.aaronbrown.wsprdynamo.wsprLoader;
+import net.aaronbrown.wsprstatistics.dao.SpotsDao;
+import net.aaronbrown.wsprstatistics.dto.CSVWSPRSpotDTO;
+import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +24,6 @@ public class SpotLoadingService {
 
     @Autowired
     private SpotsDao spotsDao;
-
-
 
     public List<Thread> processAll() {
         List<Thread> workers = new ArrayList<>();

@@ -1,11 +1,17 @@
-package net.aaronbrown.wsprdynamo.models;
+package net.aaronbrown.wsprstatistics.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 /**
  * Created by aaron on 12/5/2016.
  */
+
+@Entity
 public class WSPRSpot {
+
+    @Id
     private Long spotID;
     private LocalDateTime spotTime;
     private String reporter;

@@ -1,11 +1,11 @@
-package net.aaronbrown.wsprdynamo.controller;
+package net.aaronbrown.wsprstatistics.controller;
 
 /**
  * Created by aaron on 13/12/16.
  */
 
-import net.aaronbrown.wsprdynamo.dao.SpotsDao;
-import net.aaronbrown.wsprdynamo.models.WSPRSpot;
+import net.aaronbrown.wsprstatistics.dao.SpotsDao;
+import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

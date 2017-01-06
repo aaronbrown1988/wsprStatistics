@@ -1,6 +1,6 @@
-package net.aaronbrown.wsprdynamo.controller;
+package net.aaronbrown.wsprstatistics.controller;
 
-import net.aaronbrown.wsprdynamo.services.SpotLoadingService;
+import net.aaronbrown.wsprstatistics.services.SpotLoadingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
