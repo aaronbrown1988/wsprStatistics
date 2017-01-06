@@ -1,7 +1,7 @@
 package net.aaronbrown.wsprstatistics.services;
 
 import net.aaronbrown.wsprstatistics.dto.CSVWSPRSpotDTO;
-import net.aaronbrown.wsprstatistics.models.WSPRSpot;
+import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
 import net.aaronbrown.wsprstatistics.repository.SpotsRepository;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;

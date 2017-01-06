@@ -1,4 +1,4 @@
-package net.aaronbrown.wsprstatistics.models;
+package net.aaronbrown.wsprstatistics.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,6 +1,6 @@
 package net.aaronbrown.wsprstatistics.repository;
 
-import net.aaronbrown.wsprstatistics.models.WSPRSpot;
+import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -4,7 +4,7 @@ package net.aaronbrown.wsprstatistics.controller;
  * Created by aaron on 13/12/16.
  */
 
-import net.aaronbrown.wsprstatistics.models.WSPRSpot;
+import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
 import net.aaronbrown.wsprstatistics.repository.SpotsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

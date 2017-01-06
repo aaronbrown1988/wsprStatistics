@@ -1,6 +1,6 @@
 package net.aaronbrown.wsprstatistics.services;
 
-import net.aaronbrown.wsprstatistics.models.WSPRSpot;
+import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
 import net.aaronbrown.wsprstatistics.repository.SpotsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
