@@ -14,5 +14,6 @@ public interface SpotsRepository extends CrudRepository<WSPRSpot, Long> {
 
     List<WSPRSpot> findByCallsign(String callSign);
 
+    List<WSPRSpot> findByCallsignAndBand(String callsign, Integer band);
 
 }
