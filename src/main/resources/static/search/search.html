@@ -1,11 +1,11 @@
 <div class="container">
-<form>
-    <label for="callsign">Callsign:</label>
-    <input id="callsign" ng-model="searchCtrl.callsign">
-    <button ng-click="searchCtrl.search()">Search</button>
-</form>
+    <form>
+        <label for="callsign">Callsign:</label>
+        <input id="callsign" ng-model="searchCtrl.callsign">
+        <button ng-click="searchCtrl.search()">Search</button>
+    </form>
 
-    <table>
+    <table class="table table-striped">
         <thead>
         <th>SpoId</th>
         <th>Callsign</th>
@@ -20,6 +20,7 @@
         <th>Band</th>
         </thead>
 
+        <tbody>
         <tr ng-repeat="spot in searchCtrl.data">
             <td>{{spot.spotID}}</td>
             <td>{{spot.callsign}}</td>
@@ -32,8 +33,7 @@
             <td>{{spot.distance}}</td>
             <td>{{spot.azimuth}}</td>
             <td>{{spot.band}}</td>
-
-
         </tr>
-</table>
+        </tbody>
+    </table>
 </div>

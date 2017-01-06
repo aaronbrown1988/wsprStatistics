@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Search for statistics for a given Callsign</h2>
+
+    <form>
+        <label for="callsign">Callsign:</label>
+        <input id="callsign" ng-model="statisticsCtrl.callsign">
+        <button ng-click="statisticsCtrl.search()">Search</button>
+    </form>
+
+    <h3> Average Distance by band</h3>
+    <table class="table table-striped table-hover">
+        <thead>
+        <th>Band (MHz)</th>
+        <th> Avg Distance (km)</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="(key,value) in statisticsCtrl.data">
+            <td>{{key}}</td>
+            <td>{{value|number:2}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
