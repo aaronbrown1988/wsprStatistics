@@ -3,7 +3,7 @@
 angular.module('wsprStats.search', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/search', {
-            templateUrl: '/search/search.html',
+            templateUrl: './search/search.html',
             controller: 'SearchCtrl',
             controllerAs:'searchCtrl'
         });

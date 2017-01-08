@@ -4,7 +4,7 @@ angular.module('wsprStats.home', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
 $routeProvider.when('/home', {
-templateUrl: '/home/home.html',
+    templateUrl: './home/home.html',
 controller: 'HomeCtrl'
 });
 }])

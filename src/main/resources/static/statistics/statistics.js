@@ -3,7 +3,7 @@
 angular.module('wsprStats.statistics', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/stats', {
-            templateUrl: '/statistics/statistics.html',
+            templateUrl: './statistics/statistics.html',
             controller: 'StatisticsCtrl',
             controllerAs: 'statisticsCtrl'
         });
