@@ -5,7 +5,7 @@
         <button ng-click="searchCtrl.search()">Search</button>
     </form>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
         <th>SpoId</th>
         <th>Callsign</th>
@@ -25,10 +25,10 @@
             <td>{{spot.spotID}}</td>
             <td>{{spot.callsign}}</td>
             <td>{{spot.reporter}}</td>
-            <td>{{spot.reportersLocation}}</td>
+            <td>{{spot.reportersLocator}}</td>
             <td>{{spot.snr}}</td>
             <td>{{spot.frequency}}</td>
-            <td>{{spot.txLocation}}</td>
+            <td>{{spot.txLocator}}</td>
             <td>{{spot.txPower}}</td>
             <td>{{spot.distance}}</td>
             <td>{{spot.azimuth}}</td>
@@ -36,4 +36,6 @@
         </tr>
         </tbody>
     </table>
+    <a href="" ng-click="searchCtrl.prev()">Back</a> {{searchCtrl.page}} of {{searchCtrl.pages}} <a href=""
+                                                                                                    ng-click="searchCtrl.next()">Next</a>
 </div>

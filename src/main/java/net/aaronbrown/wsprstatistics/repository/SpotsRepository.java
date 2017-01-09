@@ -1,6 +1,8 @@
 package net.aaronbrown.wsprstatistics.repository;
 
 import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +18,8 @@ import java.util.Map;
 public interface SpotsRepository extends CrudRepository<WSPRSpot, Long> {
 
     List<WSPRSpot> findByCallsign(String callSign);
+
+    Page<WSPRSpot> findByCallsign(String callSign, Pageable pageable);
 
     List<WSPRSpot> findByCallsignAndBand(String callsign, Integer band);
 

@@ -13,7 +13,7 @@ public class CSVWSPRSpotDTO {
         currentSpot.setSpotID(Long.parseLong(record.get(0)));
         currentSpot.setSpotTime(LocalDateTime.ofEpochSecond(Long.parseLong(record.get(++i)), 0, ZoneOffset.UTC));
         currentSpot.setReporter(record.get(++i));
-        currentSpot.setReporterslocator(record.get(++i));
+        currentSpot.setReportersLocator(record.get(++i));
         currentSpot.setSnr(Integer.parseInt(record.get(++i)));
         currentSpot.setFrequency(Double.parseDouble(record.get(++i)));
         currentSpot.setCallsign(record.get(++i));

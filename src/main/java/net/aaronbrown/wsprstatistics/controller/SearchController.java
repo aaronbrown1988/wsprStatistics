@@ -7,6 +7,8 @@ package net.aaronbrown.wsprstatistics.controller;
 import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
 import net.aaronbrown.wsprstatistics.repository.SpotsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +25,11 @@ public class SearchController {
     @RequestMapping("/call/{callsign}")
     public List<WSPRSpot> searchCall(@PathVariable String callsign) {
         return (spotsRepository.findByCallsign(callsign));
+    }
+
+    @RequestMapping("/call/{callsign}/{page}")
+    public Page<WSPRSpot> searchCall(@PathVariable String callsign, @PathVariable Integer page) {
+        return (spotsRepository.findByCallsign(callsign, new PageRequest(page, 20)));
     }
 
 }

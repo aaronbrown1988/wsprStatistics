@@ -15,7 +15,7 @@ public class WSPRSpot {
     private Long spotID;
     private LocalDateTime spotTime;
     private String reporter;
-    private String reporterslocator;
+    private String reportersLocator;
     private Integer snr;
     private double frequency;
     private String callsign;
@@ -52,12 +52,12 @@ public class WSPRSpot {
         this.reporter = reporter;
     }
 
-    public String getReporterslocator() {
-        return reporterslocator;
+    public String getReportersLocator() {
+        return reportersLocator;
     }
 
-    public void setReporterslocator(String reporterslocator) {
-        this.reporterslocator = reporterslocator;
+    public void setReportersLocator(String reportersLocator) {
+        this.reportersLocator = reportersLocator;
     }
 
     public Integer getSnr() {
@@ -154,7 +154,7 @@ public class WSPRSpot {
                 "spotID=" + spotID +
                 ", spotTime=" + spotTime +
                 ", reporter='" + reporter + '\'' +
-                ", reporterslocator='" + reporterslocator + '\'' +
+                ", reportersLocator='" + reportersLocator + '\'' +
                 ", snr=" + snr +
                 ", frequency=" + frequency +
                 ", callsign='" + callsign + '\'' +
