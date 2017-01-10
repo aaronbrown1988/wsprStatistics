@@ -20,7 +20,7 @@ angular.module('wsprStats.search', ['ngRoute'])
         vm.search = function() {
             vm.page = 0;
             vm.update();
-        };;;;;;;;;;;;;;;;;;
+        };
 
         vm.update = function () {
             $http.get("./api/search/call/" + vm.callsign + "/" + vm.page).then(function (response) {
@@ -38,6 +38,7 @@ angular.module('wsprStats.search', ['ngRoute'])
                 vm.update();
             }
         };
+
         vm.back = function () {
             if (vm.page - 1 >= 0) {
                 vm.page = vm.page - 1;

@@ -14,9 +14,12 @@
         <th> Avg Distance (km)</th>
         </thead>
         <tbody>
-        <tr ng-repeat="(key,value) in statisticsCtrl.data">
+        <tr ng-show="statisticsCtrl.loading==false" ng-repeat="(key,value) in statisticsCtrl.data">
             <td>{{key}}</td>
             <td>{{value|number:2}}</td>
+        </tr>
+        <tr ng-show="statisticsCtrl.loading">
+            <td>Loading....</td>
         </tr>
         </tbody>
     </table>
