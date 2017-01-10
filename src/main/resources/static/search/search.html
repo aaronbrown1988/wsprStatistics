@@ -21,7 +21,7 @@
         </thead>
 
         <tbody>
-        <tr ng-repeat="spot in searchCtrl.data">
+        <tr ng-show="!searchCtrl.loading" ng-repeat="spot in searchCtrl.data">
             <td>{{spot.spotID}}</td>
             <td>{{spot.callsign}}</td>
             <td>{{spot.reporter}}</td>
@@ -34,8 +34,20 @@
             <td>{{spot.azimuth}}</td>
             <td>{{spot.band}}</td>
         </tr>
+        <tr ng-show="searchCtrl.loading">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Loading...</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
         </tbody>
     </table>
+
     <a href="" ng-click="searchCtrl.prev()">Back</a> {{searchCtrl.page}} of {{searchCtrl.pages}} <a href=""
                                                                                                     ng-click="searchCtrl.next()">Next</a>
 </div>
