@@ -1,5 +1,6 @@
 package net.aaronbrown.wsprstatistics.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ public class WSPRSpot {
 
     @Id
     private Long spotID;
+    @Column(columnDefinition = "datetime")
     private LocalDateTime spotTime;
     private String reporter;
     private String reportersLocator;

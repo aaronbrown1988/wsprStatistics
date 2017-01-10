@@ -1,6 +1,7 @@
 package net.aaronbrown.wsprstatistics.dto;
 
 import net.aaronbrown.wsprstatistics.entity.Country;
+import org.apache.commons.csv.CSVRecord;
 
 /**
  *
