@@ -18,7 +18,7 @@ angular.module('wsprStats.statistics', ['ngRoute'])
         vm.loading=false;
         vm.search = function () {
             vm.loading = true;
-            $http.get("./api/stats/" + vm.callsign + "/distance/band/avg").then(function (response) {
+            $http.get("./api/stats/" + vm.callsign + "/distance/band/all").then(function (response) {
                 vm.data = response.data
                 vm.loading = false;
             });

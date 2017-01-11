@@ -29,6 +29,7 @@ public class StatisticsService {
         return spotList.stream().collect(Collectors.groupingBy(WSPRSpot::getBand, Collectors.summarizingDouble(WSPRSpot::getDistance)));
     }
 
+
     //TODO
     public Map<Integer, DoubleSummaryStatistics> allDistanceStatsByBand() {
         return null;

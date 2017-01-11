@@ -12,11 +12,17 @@
         <thead>
         <th>Band (MHz)</th>
         <th> Avg Distance (km)</th>
+        <th>Minimum Distance (km)</th>
+        <th>Maximum Distance (km)</th>
+        <th>Count</th>
         </thead>
         <tbody>
         <tr ng-show="statisticsCtrl.loading==false" ng-repeat="(key,value) in statisticsCtrl.data">
             <td>{{key}}</td>
-            <td>{{value|number:2}}</td>
+            <td>{{value.average|number:2}}</td>
+            <td>{{value.min|number:2}}</td>
+            <td>{{value.max|number:2}}</td>
+            <td>{{value.count|number:2}}</td>
         </tr>
         <tr ng-show="statisticsCtrl.loading">
             <td>Loading....</td>
