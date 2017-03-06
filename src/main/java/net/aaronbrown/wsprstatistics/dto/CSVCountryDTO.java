@@ -19,6 +19,8 @@ public class CSVCountryDTO {
         country.setCountryCode(record.get(++i));
         country.setStartPrefix(record.get(++i));
         country.setEndPrefix(record.get(++i));
+        country.setStartHash(country.getStartPrefix().hashCode());
+        country.setEndHash(country.getEndPrefix().hashCode());
         return country;
     }
 }

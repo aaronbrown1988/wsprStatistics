@@ -1,5 +1,8 @@
 package net.aaronbrown.wsprstatistics.entity;
 
+
+import org.hibernate.annotations.Index;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,16 +19,19 @@ public class WSPRSpot {
     private Long spotID;
     @Column(columnDefinition = "datetime")
     private LocalDateTime spotTime;
+    @Index(name = "reporter_index")
     private String reporter;
     private String reportersLocator;
     private Integer snr;
     private double frequency;
+    @Index(name = "call_index")
     private String callsign;
     private String txLocator;
     private Double txPower;
     private Double drift;
     private double distance;
     private double azimuth;
+    @Index(name = "band_index")
     private Integer band;
     private String version;
     private String code;
