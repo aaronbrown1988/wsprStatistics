@@ -19,7 +19,7 @@ angular.module('wsprStats.statistics', ['ngRoute'])
         vm.search = function () {
             vm.loading = true;
             $http.get("./api/stats/" + vm.callsign + "/distance/band/all").then(function (response) {
-                vm.data = response.data
+                vm.data = response.data;
                 vm.loading = false;
             });
         }

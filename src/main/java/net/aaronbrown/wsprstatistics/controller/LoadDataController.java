@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class LoadDataController {
 
-    private List<Thread> workers = new ArrayList<>();
+    private final List<Thread> workers = new ArrayList<>();
 
     @Autowired
     private SpotLoadingService spotLoadingService;

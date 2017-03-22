@@ -39,6 +39,19 @@ public class BigQueryService {
                         .setUseLegacySql(true)
                         .build();
         // Execute the query.
+        QueryResult result = runQuery(queryRequest);
+        Iterator<List<FieldValue>> iter = result.iterateAll();
+
+        while (iter.hasNext()) {
+            List<FieldValue> row = iter.next();
+            System.out.printf(
+                    "%s: %g\n",
+                    row.get(0).getStringValue(),
+                    row.get(1).getDoubleValue());
+        }
+    }
+
+    private QueryResult runQuery(QueryRequest queryRequest) {
         QueryResponse response = bigQuery.query(queryRequest);
 
         try {
@@ -56,7 +69,7 @@ public class BigQueryService {
                     response
                             .getExecutionErrors()
                             .stream()
-                            .map(err -> err.getMessage())
+                            .map(BigQueryError::getMessage)
                             .collect(Collectors.joining("\n")));
         }
 
@@ -70,7 +83,7 @@ public class BigQueryService {
                     row.get(0).getStringValue(),
                     row.get(1).getDoubleValue());
         }
+        return result;
     }
-
 
 }
