@@ -1,19 +1,12 @@
-package net.aaronbrown.wsprstatistics.entity;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package net.aaronbrown.wsprstatistics.models;
 
 /**
  *
  *
  */
-@Entity
 public class Country {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
 
     private String countryCode;

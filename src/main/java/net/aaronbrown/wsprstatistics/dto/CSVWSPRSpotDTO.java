@@ -1,6 +1,6 @@
 package net.aaronbrown.wsprstatistics.dto;
 
-import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
+import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.apache.commons.csv.CSVRecord;
 
 import java.time.LocalDateTime;

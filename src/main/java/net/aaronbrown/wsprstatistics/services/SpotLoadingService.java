@@ -1,8 +1,8 @@
 package net.aaronbrown.wsprstatistics.services;
 
+import net.aaronbrown.wsprstatistics.dao.SpotsDAO;
 import net.aaronbrown.wsprstatistics.dto.CSVWSPRSpotDTO;
-import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
-import net.aaronbrown.wsprstatistics.repository.SpotsRepository;
+import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import java.util.zip.ZipInputStream;
 public class SpotLoadingService {
 
     @Autowired
-    private SpotsRepository spotsRepository;
+    private SpotsDAO spotsDAO;
 
     public List<Thread> processAll() {
         List<Thread> workers = new ArrayList<>();
@@ -59,7 +59,7 @@ public class SpotLoadingService {
 
             for (CSVRecord record : records) {
                 WSPRSpot currentSpot = CSVWSPRSpotDTO.convertToWspr(record);
-                spotsRepository.save(currentSpot);
+//                spotsRepository.save(currentSpot);
                 counter++;
                 if (counter % 1000 == 0) {
                     System.out.println(filename+" : " + counter);

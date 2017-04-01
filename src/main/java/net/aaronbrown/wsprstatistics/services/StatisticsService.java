@@ -1,7 +1,8 @@
 package net.aaronbrown.wsprstatistics.services;
 
-import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
-import net.aaronbrown.wsprstatistics.repository.SpotsRepository;
+import net.aaronbrown.wsprstatistics.dao.SpotsDAO;
+import net.aaronbrown.wsprstatistics.models.Statistics;
+import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,16 +18,16 @@ import java.util.stream.Collectors;
 public class StatisticsService {
 
     @Autowired
-    private SpotsRepository spotsRepository;
+    private SpotsDAO spotsDAO;
 
     public Map<Integer, Double> distanceByBand(String callsign) {
-        List<WSPRSpot> spotList = spotsRepository.findByCallsign(callsign);
+        List<WSPRSpot> spotList = spotsDAO.findByCallsign(callsign);
         return spotList.stream().collect(Collectors.groupingBy(WSPRSpot::getBand, Collectors.averagingDouble(WSPRSpot::getDistance)));
     }
 
-    public Map<Integer, DoubleSummaryStatistics> distanceStatsByBand(String callsign) {
-        List<WSPRSpot> spotList = spotsRepository.findByCallsign(callsign);
-        return spotList.stream().collect(Collectors.groupingBy(WSPRSpot::getBand, Collectors.summarizingDouble(WSPRSpot::getDistance)));
+    public Map<String, Statistics> distanceStatsByBand(String callsign) {
+        return spotsDAO.statisticsByBand(callsign);
+
     }
 
 

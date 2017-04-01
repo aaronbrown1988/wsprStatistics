@@ -4,11 +4,9 @@ package net.aaronbrown.wsprstatistics.controller;
  * Created by aaron on 13/12/16.
  */
 
-import net.aaronbrown.wsprstatistics.entity.WSPRSpot;
-import net.aaronbrown.wsprstatistics.repository.SpotsRepository;
+import net.aaronbrown.wsprstatistics.dao.SpotsDAO;
+import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,16 +18,16 @@ import java.util.List;
 public class SearchController {
 
     @Autowired
-    private SpotsRepository spotsRepository;
+    private SpotsDAO spotsDAO;
 
     @RequestMapping("/call/{callsign}")
     public List<WSPRSpot> searchCall(@PathVariable String callsign) {
-        return (spotsRepository.findByCallsign(callsign));
+        return (spotsDAO.findByCallsign(callsign));
     }
 
     @RequestMapping("/call/{callsign}/{page}")
-    public Page<WSPRSpot> searchCall(@PathVariable String callsign, @PathVariable Integer page) {
-        return (spotsRepository.findByCallsign(callsign, new PageRequest(page, 20)));
+    public List<WSPRSpot> searchCall(@PathVariable String callsign, @PathVariable Integer page) {
+        return (spotsDAO.findByCallsign(callsign, page));
     }
 
 }

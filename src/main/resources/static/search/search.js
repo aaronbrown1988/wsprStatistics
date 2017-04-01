@@ -25,7 +25,7 @@ angular.module('wsprStats.search', ['ngRoute'])
 
         vm.update = function () {
             vm.loading = true;
-            $http.get("./api/search/call/" + vm.callsign + "/" + vm.page).then(function (response) {
+            $http.get("./api/search/call/" + vm.callsign).then(function (response) {
                 vm.data = response.data.content;
                 vm.page = response.data.number;
                 vm.pages = response.data.totalPages;

@@ -51,7 +51,7 @@ public class BigQueryService {
         }
     }
 
-    private QueryResult runQuery(QueryRequest queryRequest) {
+    public QueryResult runQuery(QueryRequest queryRequest) {
         QueryResponse response = bigQuery.query(queryRequest);
 
         try {

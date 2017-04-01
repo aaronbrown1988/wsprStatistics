@@ -1,5 +1,6 @@
 package net.aaronbrown.wsprstatistics.controller;
 
+import net.aaronbrown.wsprstatistics.models.Statistics;
 import net.aaronbrown.wsprstatistics.services.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ public class StatisticsController {
     }
 
     @RequestMapping("/{callsign}/distance/band/all")
-    public Map<Integer, DoubleSummaryStatistics> maxDistanceByBandForCallsign(@PathVariable String callsign) {
+    public Map<String, Statistics> maxDistanceByBandForCallsign(@PathVariable String callsign) {
         return statisticsService.distanceStatsByBand(callsign);
     }
 
