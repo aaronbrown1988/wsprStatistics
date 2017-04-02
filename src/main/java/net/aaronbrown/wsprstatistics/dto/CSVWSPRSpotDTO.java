@@ -3,15 +3,14 @@ package net.aaronbrown.wsprstatistics.dto;
 import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.apache.commons.csv.CSVRecord;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.util.Date;
 
 public class CSVWSPRSpotDTO {
     public static WSPRSpot convertToWspr(CSVRecord record) {
         Integer i = 0;
         WSPRSpot currentSpot = new WSPRSpot();
         currentSpot.setSpotID(Long.parseLong(record.get(0)));
-        currentSpot.setSpotTime(LocalDateTime.ofEpochSecond(Long.parseLong(record.get(++i)), 0, ZoneOffset.UTC));
+        currentSpot.setSpotTime(new Date(Long.parseLong(record.get(++i))));
         currentSpot.setReporter(record.get(++i));
         currentSpot.setReportersLocator(record.get(++i));
         currentSpot.setSnr(Integer.parseInt(record.get(++i)));

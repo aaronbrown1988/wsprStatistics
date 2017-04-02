@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by aaron on 6/03/17.
@@ -66,11 +65,7 @@ public class BigQueryService {
 
         if (response.hasErrors()) {
             throw new RuntimeException(
-                    response
-                            .getExecutionErrors()
-                            .stream()
-                            .map(BigQueryError::getMessage)
-                            .collect(Collectors.joining("\n")));
+                    response.getExecutionErrors().toString());
         }
 
         QueryResult result = response.getResult();

@@ -8,15 +8,11 @@ import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.zip.ZipInputStream;
 
 @Service
@@ -26,26 +22,28 @@ public class SpotLoadingService {
     private SpotsDAO spotsDAO;
 
     public List<Thread> processAll() {
-        List<Thread> workers = new ArrayList<>();
-        Integer counter = 1;
-        File folder = new File("/home/aaron/Downloads/");
-        List<File> listOfFiles = Arrays.stream(folder.listFiles()).filter(p -> p.getName().contains("wsprspots") && p.getName().contains("zip")).collect(Collectors.toList());
-        for (File file : listOfFiles) {
-            if (file.getName().contains("wsprspots")) {
-                Thread worker = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println("Spawing Thread ("+Thread.currentThread().getId()+")for file " + counter + " of" + listOfFiles.size() + " : " + file.getName());
-                        loadData(file.getName());
-                        workers.remove(Thread.currentThread());
-                    }
-                });
-                workers.add(worker);
-                worker.start();
-
-            }
-        }
-        return workers;
+        //TODO
+//        final List<Thread> workers = new ArrayList<>();
+//        final Integer counter = 1;
+//        File folder = new File("/home/aaron/Downloads/");
+//        final List<File> listOfFiles = Arrays.asList(folder.listFiles());
+//        for (final File file : listOfFiles) {
+//            if (file.getName().contains("wsprspots")) {
+//                Thread worker = new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        System.out.println("Spawing Thread ("+Thread.currentThread().getId()+")for file " + counter + " of" + listOfFiles.size() + " : " + file.getName());
+//                        loadData(file.getName());
+//                        workers.remove(Thread.currentThread());
+//                    }
+//                });
+//                workers.add(worker);
+//                worker.start();
+//
+//            }
+//        }
+//        return workers;
+        return null;
     }
 
     public void loadData(String filename) {

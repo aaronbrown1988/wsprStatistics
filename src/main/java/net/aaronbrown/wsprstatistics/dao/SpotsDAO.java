@@ -9,8 +9,6 @@ import net.aaronbrown.wsprstatistics.services.BigQueryService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.*;
 
 /**
@@ -46,7 +44,7 @@ public class SpotsDAO {
             List<FieldValue> record = iter.next();
             WSPRSpot currentSpot = new WSPRSpot();
             currentSpot.setSpotID(record.get(0).getLongValue());
-            currentSpot.setSpotTime(LocalDateTime.ofEpochSecond(Long.parseLong(record.get(++i).getStringValue()), 0, ZoneOffset.UTC));
+            currentSpot.setSpotTime(new Date(Long.parseLong(record.get(++i).getStringValue())));
             currentSpot.setReporter(record.get(++i).getStringValue());
             currentSpot.setReportersLocator(record.get(++i).getStringValue());
             currentSpot.setSnr(Integer.parseInt(record.get(++i).getStringValue()));

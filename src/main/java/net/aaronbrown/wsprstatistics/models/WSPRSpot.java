@@ -1,7 +1,7 @@
 package net.aaronbrown.wsprstatistics.models;
 
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by aaron on 12/5/2016.
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class WSPRSpot {
 
     private Long spotID;
-    private LocalDateTime spotTime;
+    private Date spotTime;
     private String reporter;
     private String reportersLocator;
     private Integer snr;
@@ -33,11 +33,11 @@ public class WSPRSpot {
         this.spotID = spotID;
     }
 
-    public LocalDateTime getSpotTime() {
+    public Date getSpotTime() {
         return spotTime;
     }
 
-    public void setSpotTime(LocalDateTime spotTime) {
+    public void setSpotTime(Date spotTime) {
         this.spotTime = spotTime;
     }
 
