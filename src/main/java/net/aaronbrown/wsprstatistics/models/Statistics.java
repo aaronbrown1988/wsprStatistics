@@ -1,9 +1,11 @@
 package net.aaronbrown.wsprstatistics.models;
 
+import java.io.Serializable;
+
 /**
  * Created by aaron on 1/04/17.
  */
-public class Statistics {
+public class Statistics implements Serializable {
 
     private Double average;
     private Double min;
@@ -51,4 +53,5 @@ public class Statistics {
     public void setVarience(Double varience) {
         this.varience = varience;
     }
+
 }
