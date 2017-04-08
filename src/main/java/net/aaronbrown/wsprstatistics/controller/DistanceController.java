@@ -17,17 +17,10 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/api/stats")
-public class StatisticsController {
+public class DistanceController {
 
     @Autowired
     private StatisticsService statisticsService;
-
-    @RequestMapping("/{callsign}/distance/band/avg")
-    public
-    @ResponseBody
-    Map<Integer, Double> avgDistanceByBandForCallsign(@PathVariable String callsign) {
-        return statisticsService.distanceByBand(callsign);
-    }
 
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping("/{callsign}/distance/band/all")
@@ -36,11 +29,5 @@ public class StatisticsController {
     Map<String, Statistics> maxDistanceByBandForCallsign(@PathVariable String callsign) {
         return statisticsService.distanceStatsByBand(callsign);
     }
-
-    //TODO
-//    @RequestMapping("/all/distance/band")
-//    public @ResponseBody Map<Integer, Statistics> maxDistanceByBandForCallsign() {
-//        return statisticsService.allDistanceStatsByBand();
-//    }
 
 }

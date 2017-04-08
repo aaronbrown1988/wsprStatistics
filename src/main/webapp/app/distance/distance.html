@@ -3,8 +3,8 @@
 
     <form>
         <label for="callsign">Callsign:</label>
-        <input id="callsign" ng-model="statisticsCtrl.callsign">
-        <button ng-click="statisticsCtrl.search()">Search</button>
+        <input id="callsign" ng-model="distanceCtrl.callsign">
+        <button ng-click="distanceCtrl.search()">Search</button>
     </form>
 
     <h3> Average Distance by band</h3>
@@ -17,17 +17,17 @@
         <th>Count</th>
         </thead>
         <tbody>
-        <tr ng-show="statisticsCtrl.loading==false" ng-repeat="(key,value) in statisticsCtrl.data">
+        <tr ng-show="distanceCtrl.loading==false" ng-repeat="(key,value) in distanceCtrl.data">
             <td>{{key}}</td>
             <td>{{value.average|number:2}}</td>
             <td>{{value.min|number:2}}</td>
             <td>{{value.max|number:2}}</td>
             <td>{{value.count|number:2}}</td>
         </tr>
-        <tr ng-show="statisticsCtrl.loading">
+        <tr ng-show="distanceCtrl.loading">
             <td>Loading....</td>
         </tr>
-        <tr ng-show="statisticsCtrl.loading">
+        <tr ng-show="distanceCtrl.loading">
             <td>Loading....</td>
         </tr>
         </tbody>

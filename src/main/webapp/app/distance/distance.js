@@ -2,15 +2,15 @@
 
 angular.module('wsprStats.statistics', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/stats', {
-            templateUrl: './statistics/statistics.html',
-            controller: 'StatisticsCtrl',
-            controllerAs: 'statisticsCtrl'
+        $routeProvider.when('/distance', {
+            templateUrl: './distance/distance.html',
+            controller: 'DistanceCtrl',
+            controllerAs: 'distanceCtrl'
         });
     }])
 
 
-    .controller('StatisticsCtrl', ['$http', function ($http) {
+    .controller('DistanceCtrl', ['$http', function ($http) {
         var vm = this;
 
         vm.callsign = "";

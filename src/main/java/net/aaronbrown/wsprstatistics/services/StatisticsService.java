@@ -2,11 +2,9 @@ package net.aaronbrown.wsprstatistics.services;
 
 import net.aaronbrown.wsprstatistics.dao.SpotsDAO;
 import net.aaronbrown.wsprstatistics.models.Statistics;
-import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -22,12 +20,6 @@ public class StatisticsService {
     @Autowired
     CacheService cacheService;
 
-    public Map<Integer, Double> distanceByBand(String callsign) {
-        List<WSPRSpot> spotList = spotsDAO.findByCallsign(callsign);
-        //TODO
-        return null;
-    }
-
     public Map<String, Statistics> distanceStatsByBand(String callsign) {
         Map<String, Statistics> stats = (Map<String, Statistics>) cacheService.getObject(callsign + "-statsByBand");
         if (stats == null) {
@@ -36,11 +28,5 @@ public class StatisticsService {
             cacheService.putObject(callsign + "statsByBand", stats);
         }
         return stats;
-    }
-
-
-    //TODO
-    public Map<Integer, Statistics> allDistanceStatsByBand() {
-        return null;
     }
 }

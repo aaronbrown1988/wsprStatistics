@@ -4,7 +4,6 @@
 angular.module('wsprStats', [
   'ngRoute',
   'wsprStats.home',
-    'wsprStats.search',
     'wsprStats.statistics'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

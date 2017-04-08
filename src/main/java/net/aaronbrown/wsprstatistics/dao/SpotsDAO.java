@@ -20,11 +20,18 @@ public class SpotsDAO {
     @Resource
     private BigQueryService bigQueryService;
 
-
     public List<WSPRSpot> findByCallsign(String callSign) {
+        return findByCallsign(callSign, true);
+    }
+
+
+    public List<WSPRSpot> findByCallsign(String callSign, Boolean limit) {
         String queryString = "SELECT * " +
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
                 "where Call_Sign='" + callSign + "'";
+        if (limit != false) {
+            queryString = queryString + "  LIMT TO 1000";
+        }
 
         QueryRequest queryRequest =
                 QueryRequest.newBuilder(queryString)
@@ -83,6 +90,27 @@ public class SpotsDAO {
                         .build();
         // Execute the query.
         QueryResult result = bigQueryService.runQuery(queryRequest);
+        return getStringStatisticsMap(result);
+    }
+
+    public Map<String, Statistics> statisticsByHour(String callSign, Integer band, Date start, Date end) {
+        String queryString = "SELECT hour(spot_time) as h,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
+                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
+                "where Call_Sign='" + callSign + "' and band=" + band + " and spot_time between " + start + " and " + end + " group by h";
+
+        QueryRequest queryRequest =
+                QueryRequest.newBuilder(queryString)
+                        //.addNamedParameter("band", QueryParameterValue.int64(band))
+                        // Standard SQL syntax is required for parameterized queries.
+                        // See: https://cloud.google.com/bigquery/sql-reference/
+                        .setUseLegacySql(true)
+                        .build();
+        // Execute the query.
+        QueryResult result = bigQueryService.runQuery(queryRequest);
+        return getStringStatisticsMap(result);
+    }
+
+    private Map<String, Statistics> getStringStatisticsMap(QueryResult result) {
         Iterator<List<FieldValue>> iter = result.iterateAll();
 
         HashMap<String, Statistics> stats = new HashMap<>();
@@ -90,12 +118,14 @@ public class SpotsDAO {
         while (iter.hasNext()) {
             List<FieldValue> record = iter.next();
             Statistics current = new Statistics();
-            current.setAverage(record.get(1).getDoubleValue());
-            current.setMax(record.get(2).getDoubleValue());
-            current.setMin(record.get(3).getDoubleValue());
-            current.setCount(record.get(4).getDoubleValue());
-            current.setVarience(record.get(5).getDoubleValue());
-            stats.put(record.get(0).getStringValue(), current);
+            if (!record.get(0).isNull()) {
+                current.setAverage(record.get(1).isNull() ? 0 : record.get(1).getDoubleValue());
+                current.setMax(record.get(2).isNull() ? 0 : record.get(2).getDoubleValue());
+                current.setMin(record.get(3).isNull() ? 0 : record.get(3).getDoubleValue());
+                current.setCount(record.get(4).isNull() ? 0 : record.get(4).getDoubleValue());
+                current.setVarience(record.get(5).isNull() ? 0 : record.get(5).getDoubleValue());
+                stats.put(record.get(0).getStringValue(), current);
+            }
 
         }
         return stats;

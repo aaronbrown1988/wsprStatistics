@@ -25,31 +25,6 @@ public class BigQueryService {
     }
 
 
-    public void avgDistanceByTimeForBand(Integer band) {
-        String queryString = "SELECT hour(Timestamp) as hour,avg(Distance) " +
-                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
-                "where Band=" + band.toString() + " group by hour order by hour";
-
-        QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
-                        //.addNamedParameter("band", QueryParameterValue.int64(band))
-                        // Standard SQL syntax is required for parameterized queries.
-                        // See: https://cloud.google.com/bigquery/sql-reference/
-                        .setUseLegacySql(true)
-                        .build();
-        // Execute the query.
-        QueryResult result = runQuery(queryRequest);
-        Iterator<List<FieldValue>> iter = result.iterateAll();
-
-        while (iter.hasNext()) {
-            List<FieldValue> row = iter.next();
-            System.out.printf(
-                    "%s: %g\n",
-                    row.get(0).getStringValue(),
-                    row.get(1).getDoubleValue());
-        }
-    }
-
     public QueryResult runQuery(QueryRequest queryRequest) {
         QueryResponse response = bigQuery.query(queryRequest);
 
@@ -71,13 +46,6 @@ public class BigQueryService {
         QueryResult result = response.getResult();
         Iterator<List<FieldValue>> iter = result.iterateAll();
 
-        while (iter.hasNext()) {
-            List<FieldValue> row = iter.next();
-            System.out.printf(
-                    "%s: %g\n",
-                    row.get(0).getStringValue(),
-                    row.get(1).getDoubleValue());
-        }
         return result;
     }
 
