@@ -25,7 +25,7 @@ public class StatisticsService {
         if (stats == null) {
             Logger.getLogger("StatisticsService").info("Not in cache");
             stats = spotsDAO.statisticsByBand(callsign);
-            cacheService.putObject(callsign + "statsByBand", stats);
+            cacheService.putObject(callsign + "-statsByBand", stats);
         }
         return stats;
     }

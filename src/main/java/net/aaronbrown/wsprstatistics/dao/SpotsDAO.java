@@ -67,19 +67,10 @@ public class SpotsDAO {
         return spots;
     }
 
-    public List<WSPRSpot> findByCallsign(String callSign, Integer page) {
-        return null;
-    }
-
-    public List<WSPRSpot> findByCallsignAndBand(String callsign, Integer band) {
-
-        return null;
-    }
-
     public Map<String, Statistics> statisticsByBand(String callSign) {
         String queryString = "SELECT band,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
-                "where Call_Sign='" + callSign + "' group by band";
+                "where Call_Sign='" + callSign + "' and band > 0 group by band";
 
         QueryRequest queryRequest =
                 QueryRequest.newBuilder(queryString)
