@@ -4,7 +4,8 @@
 angular.module('wsprStats', [
   'ngRoute',
   'wsprStats.home',
-    'wsprStats.statistics'
+    'wsprStats.distance',
+    'wsprStats.country'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

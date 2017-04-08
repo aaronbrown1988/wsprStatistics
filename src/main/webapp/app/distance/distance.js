@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('wsprStats.statistics', ['ngRoute'])
+angular.module('wsprStats.distance', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/distance', {
             templateUrl: './distance/distance.html',
@@ -25,7 +25,15 @@ angular.module('wsprStats.statistics', ['ngRoute'])
         vm.chartOptions = {
             'title': 'Average Distance per Band',
             'width': 800,
-            'height': 300
+            'height': 300,
+            series: {
+                0: {axis: 'distance'} // Bind series 0 to an axis named 'distance'.
+            },
+            axes: {
+                x: {
+                    distance: {label: 'Average Distance'}
+                }
+            }
         };
 
         vm.chart = {};

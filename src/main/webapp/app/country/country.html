@@ -1,0 +1,25 @@
+<h3> Reports by Country</h3>
+
+<form>
+    <label for="callsign">Callsign:</label>
+    <input id="callsign" ng-model="countryCtrl.callsign">
+    <button ng-click="countryCtrl.search()">Search</button>
+</form>
+
+
+<div id="country_chart"></div>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <th>Country</th>
+    <th>Count</th>
+    <th>Average per Tx</th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="(key,value) in countryCtrl.data">
+        <td>{{key}}</td>
+        <td>{{value.count}}</td>
+        <td>{{value.averagePerTx}}</td>
+    </tr>
+    </tbody>
+</table>
