@@ -1,3 +1,5 @@
 <div class="container">
-    This is a small Web App to generate some interesting statistics from the freely available WSPR spot data.
+    <p>This is a small Web App to generate some interesting statistics from the freely available WSPR spot data.</p>
+    <p ng-shown="homeCtrl.lastUpdated!= null"> The data was last updated on: {{homeCtrl.lastUpdated |
+        date:fullDate}}</p>
 </div>

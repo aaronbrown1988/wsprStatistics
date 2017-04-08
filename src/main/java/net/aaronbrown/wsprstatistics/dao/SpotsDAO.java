@@ -110,6 +110,32 @@ public class SpotsDAO {
         return getStringStatisticsMap(result);
     }
 
+    public Date lastUpdated() {
+        Date updated;
+        String queryString = "SELECT max(Timestamp)" +
+                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] ";
+
+        QueryRequest queryRequest =
+                QueryRequest.newBuilder(queryString)
+                        //.addNamedParameter("band", QueryParameterValue.int64(band))
+                        // Standard SQL syntax is required for parameterized queries.
+                        // See: https://cloud.google.com/bigquery/sql-reference/
+                        .setUseLegacySql(true)
+                        .build();
+        // Execute the query.
+        QueryResult result = bigQueryService.runQuery(queryRequest);
+        if (result.getTotalRows() != 1) {
+            updated = null;
+        } else {
+            Iterator<List<FieldValue>> iter = result.iterateAll();
+            List<FieldValue> record = iter.next();
+            updated = new Date(record.get(0).getTimestampValue());
+        }
+        return updated;
+    }
+
+
+
     private Map<String, Statistics> getStringStatisticsMap(QueryResult result) {
         Iterator<List<FieldValue>> iter = result.iterateAll();
 

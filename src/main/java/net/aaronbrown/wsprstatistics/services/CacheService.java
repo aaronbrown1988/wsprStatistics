@@ -1,6 +1,7 @@
 package net.aaronbrown.wsprstatistics.services;
 
 import com.google.appengine.api.memcache.ErrorHandlers;
+import com.google.appengine.api.memcache.Expiration;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,11 @@ public class CacheService {
 
     public void putObject(String key, Object object) {
         syncCache.put(key, object);
+    }
+
+    public void putObjectWithExpiry(String key, Object object, Integer expiry) {
+        Expiration expiration = Expiration.byDeltaSeconds(expiry);
+        syncCache.put(key, object, expiration);
     }
 
 
