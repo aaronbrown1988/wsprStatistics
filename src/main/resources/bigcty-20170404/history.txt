@@ -1,0 +1,64 @@
+    Big CTY - 4 April 2017
+    Version entity is Peru, OA
+
+    Added/changed Callsigns/prefixes:
+
+	* FT3Y, FT6Y and FT7Y are all Antarctica, CE9 in CQ zone 30, ITU zone 70
+	* E51LYC is North Cook Islands, E5/n
+	* EA5EZ/P and EA5URE/P are both Spain, EA
+	* UA0XAK/3 is Ethiopia, ET
+	* FT3Z, FT6Z and FT7Z are all Amsterdam & St. Paul Is., FT/z
+	* GB0COA, GB0USR, GB1IMD, GB8BKY, GB8EGT and GB9SPD are all Northern Ireland, GI
+	* GB3GKR and GB4SRO are both Scotland, GM
+	* GB0GLV and GB4GM are both Wales, GW
+	* KL1OH and WL7JM are both in ITU zone 6, not ITU zone 8
+	* KL7IXI is in ITU zone 7, not ITU zone 6
+	* KP4Y is in ITU zone 8, not ITU zone 7
+	* KL1OH and WL7JM are both in CQ zone 3, not CQ zone 5
+	* KL7IXI is in CQ zone 4, not CQ zone 3
+	* KP4Y is in CQ zone 5, not CQ zone 4
+	* KH2C, KH2H, KH2Z, KH6DUT, KL0IX, KL7EH, KL7FOZ, NH2BV, NH2R, NH2S
+	  and WH7RG are all United States, K in CQ zone 3, ITU zone 6
+	* AH2AQ/5, AH2EH, AH2T, AH6FV, KH2JK, KL1J, NP3NT, WH6BUL, WL7ATK
+	  and WL7F are all United States, K in CQ zone 4, ITU zone 7
+	* NH2E, NH2W and NH2W/9 are all United States, K in CQ zone 4, ITU zone 8
+	* AH2V, KH2P, KH2R, KH8DO, KL7HOT, KP3BP, KP4JB, NH2A, NH2F, WH2ABJ,
+	  WH2C, WH2G, WH6YH/4 and WP4AIZ are all United States, K in CQ zone 5, ITU zone 8
+	* KH2O and NH2B are both Mariana Islands, KH0
+	* KC0ZER, KC7VWU, KE7PEQ and NH2Z are all Hawaii, KH6
+	* KB7BNG, KC2KMU, KC7WOA, KD7MGO, KD7ZTJ, KE5VPO and N9FB are all Alaska, KL
+	* KB0AQB and N3JAM are both Puerto Rico, KP4
+	* LU7DAR/D is Argentina, LU
+	* UB5O/1 is in ITU zone 29, not ITU zone 20
+	* UB5O/1 is in CQ zone 16, not CQ zone 17
+	* RT90PK and RT9T/6 are both European Russia, UA
+	* RY83HN is European Russia, UA in ITU zone 19
+	* RK90DR and RO25KO are both European Russia, UA in CQ zone 17, ITU zone 20
+	* R8CZ/4/M and R9CZ/4/M are both European Russia, UA in CQ zone 17, ITU zone 30
+	* UA4WHX/2 is Kaliningrad, UA2
+	* UA4SBZ/0 is in ITU zone 34, not ITU zone 30
+	* RK9DR/N, RO25TN and RX6DL/8/P/QRP are all Asiatic Russia, UA9
+	* UA9SUV/8 is Asiatic Russia, UA9 in ITU zone 20
+	* RW4YA/0 is Asiatic Russia, UA9 in CQ zone 18, ITU zone 32
+	* RP72H and RP72V are both Asiatic Russia, UA9 in CQ zone 19, ITU zone 34
+	* RP72PK is Asiatic Russia, UA9 in CQ zone 19, ITU zone 35
+	* VA1CN/2 is Canada, VE in CQ zone 2, ITU zone 4
+	* VE3LLV/7 is Canada, VE in CQ zone 3, ITU zone 2
+
+    Removed Callsigns/prefixes:
+
+	* EA5EZ/P and EA5URE/P in Balearic Islands, EA6
+	* VE100VIMY in France, F
+	* GB4GM in Scotland, GM
+	* AH6OO, AH7X, AL7O, KH2BY, KH2CY, KH2S, KH6L, KH7DM, KH7S, KL7E, KL7FQQ,
+	  KL7K, KL7VB, KP3AC, KP3H, KP4RS, NH0Y, NH2K, WH2I, WH6O, WP4O and WP4OOI
+	  in United States, K
+	* N2IU and N9ZP in Mariana Islands, KH0
+	* Deleted entity Midway Island, KH4
+	* AE4MO, K6CH, K6HWK, KB7HWK, KY0C, NQ8Z, NY7Z, W2TL, W6TUS, W6UG,
+	  W8DS and WH7K in Hawaii, KH6
+	* Deleted entity Kure Island, KH7K
+	* AE6I, AF5S, K1TF, N0WIZ, N5QF and W7TFS in Alaska, KL
+	* K4PRS and K9BZ in US Virgin Islands, KP2
+	* KF1O, KI5EEE, KS0O, N1JWL, W4ZZY, W7JM and WY9J in Puerto Rico, KP4
+	* UA0XAK/3 in European Russia, UA

@@ -126,6 +126,32 @@ public class SpotsDAO {
     }
 
 
+    public Map<String, Double> getCountryByBand(String callsign, Integer band) {
+        HashMap<String, Double> countries = new HashMap<>();
+        String queryString = "select country,count(spot_id) " +
+                "from (select spot_id,substr(reporter,0,2) from [dataproc-fun:wsprnet.all_wsprnet_data] where call_sign = '" + callsign
+                + "' and Band = " + band.toString() + ") as data " +
+                "inner join [wsprstats-163301:callsign_country.big_cty] as ref on  data.f0_ = ref.prefix " +
+                " group by country order by  f0_ desc ";
+
+        QueryRequest queryRequest =
+                QueryRequest.newBuilder(queryString)
+                        .setUseLegacySql(true)
+                        .build();
+        // Execute the query.
+        QueryResult result = bigQueryService.runQuery(queryRequest);
+
+        Iterator<List<FieldValue>> iter = result.iterateAll();
+
+        while (iter.hasNext()) {
+            List<FieldValue> record = iter.next();
+            countries.put(record.get(0).getStringValue(), record.get(1).getDoubleValue());
+        }
+
+        return countries;
+    }
+
+
 
     private Map<String, Statistics> getStringStatisticsMap(QueryResult result) {
         Iterator<List<FieldValue>> iter = result.iterateAll();

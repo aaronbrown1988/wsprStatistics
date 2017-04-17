@@ -3,6 +3,8 @@
 <form>
     <label for="callsign">Callsign:</label>
     <input id="callsign" ng-model="countryCtrl.callsign">
+    <label for="band">Band:</label>
+    <input id="band" ng-model="countryCtrl.band">
     <button ng-click="countryCtrl.search()">Search</button>
 </form>
 
@@ -13,13 +15,11 @@
     <thead>
     <th>Country</th>
     <th>Count</th>
-    <th>Average per Tx</th>
     </thead>
     <tbody>
     <tr ng-repeat="(key,value) in countryCtrl.data">
         <td>{{key}}</td>
-        <td>{{value.count}}</td>
-        <td>{{value.averagePerTx}}</td>
+        <td>{{value}}</td>
     </tr>
     </tbody>
 </table>
