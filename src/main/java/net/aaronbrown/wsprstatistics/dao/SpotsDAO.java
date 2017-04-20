@@ -128,11 +128,23 @@ public class SpotsDAO {
 
     public Map<String, Double> getCountryByBand(String callsign, Integer band) {
         HashMap<String, Double> countries = new HashMap<>();
-        String queryString = "select country,count(spot_id) " +
-                "from (select spot_id,substr(reporter,0,2) from [dataproc-fun:wsprnet.all_wsprnet_data] where call_sign = '" + callsign
-                + "' and Band = " + band.toString() + ") as data " +
-                "inner join [wsprstats-163301:callsign_country.big_cty] as ref on  data.f0_ = ref.prefix " +
-                " group by country order by  f0_ desc ";
+        String queryString = "select case when\n" +
+                "ref.country is not null then\n" +
+                "ref.country\n" +
+                "when ref1.country is not null then\n" +
+                "ref1.country\n" +
+                "when ref2.country is not null then\n" +
+                "ref2.country\n" +
+                "when ref3.country is not null then\n" +
+                "ref3.country\n" +
+                " else 'Unknown'" +
+                "end as country, count(data.spot_id)\n" +
+                "from (select * from (select spot_id, substr(reporter,0,1) as a,substr(reporter,0,2)as b,substr(reporter,0,3)as c,substr(reporter,0,4)as d \n" +
+                "from [dataproc-fun:wsprnet.all_wsprnet_data] where call_sign = '" + callsign + "' and Band = " + band.toString() + ") as data\n" +
+                "left join [wsprstats-163301:callsign_country.big_cty] as ref on data.a = ref.prefix\n" +
+                "left join [wsprstats-163301:callsign_country.big_cty] as ref1 on data.b = ref1.prefix \n" +
+                "left join [wsprstats-163301:callsign_country.big_cty] as ref2 on data.c = ref2.prefix\n" +
+                "left join [wsprstats-163301:callsign_country.big_cty] as ref3 on data.d = ref3.prefix) group by country order by f0_ desc";
 
         QueryRequest queryRequest =
                 QueryRequest.newBuilder(queryString)
