@@ -1,8 +1,7 @@
 <template>
     <form>
-        <label for="callsign">Callsign:</label>
-        <input id="callsign">
-        <button>Search</button>
+      <input id="callsign" v-model="callsign">
+      <button v-on:click= search>Search</button>
     </form>
 </template>
 
@@ -12,6 +11,11 @@ export default {
   data () {
     return {
       callsign: 'Enter your callsign here'
+    }
+  },
+  methods: {
+    search: function () {
+      alert(this.callsign)
     }
   }
 }

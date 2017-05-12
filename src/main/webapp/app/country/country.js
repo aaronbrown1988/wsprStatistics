@@ -18,7 +18,9 @@ angular.module('wsprStats.country', ['ngRoute'])
 
 
         var vm = this;
-        vm.chartOptions = {};
+        vm.chartOptions = {
+            datalessRegionColor: 'transparent'
+        };
 
         vm.search = function () {
             vm.loading = true;
