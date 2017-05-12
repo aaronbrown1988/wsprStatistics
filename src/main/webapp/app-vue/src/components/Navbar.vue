@@ -3,7 +3,7 @@
 
     <b-link class="navbar-brand" to="#"><span>WSPR Statistics</span>
     </b-link>
-    <span class="col-md-2"></span>
+    <span class="col-md-7"></span>
     <search/>
 
     <b-nav-item>Home</b-nav-item>

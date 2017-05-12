@@ -1,18 +1,12 @@
 <template>
-    <form>
-      <input id="callsign" v-model="callsign">
-      <button v-on:click= search>Search</button>
-    </form>
+
+  <b-form-input id="callsign" size="8" type="text" placeholder="Enter your callsign" v-model="callsign">
+  </b-form-input>
 </template>
 
 <script>
 export default {
   name: 'search',
-  data () {
-    return {
-      callsign: 'Enter your callsign here'
-    }
-  },
   methods: {
     search: function () {
       alert(this.callsign)
