@@ -3,8 +3,10 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
-import {Country} from "./cards/country";
-import {Distance} from "./cards/distance";
+import {Country} from "./components/cards/country";
+import {Distance} from "./components/cards/distance";
+import {Logger} from "./services/logger.service";
+import {DistanceService} from "./services/distance.service";
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import {Distance} from "./cards/distance";
         HttpModule,
 
     ],
-    providers: [],
+  providers: [Logger,
+    DistanceService
+  ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
