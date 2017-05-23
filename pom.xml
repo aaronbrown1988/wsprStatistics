@@ -174,7 +174,7 @@
                         <configuration>
                             <warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
                             <webXml>${project.basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
-                            <packagingIncludes>app-ng4/**/*,WEB-INF/**,META-INF/**</packagingIncludes>
+                            <packagingIncludes>app-ng4/dist/*,WEB-INF/**,META-INF/**</packagingIncludes>
                             <packagingExcludes>app/**/*,app-vue/**/*</packagingExcludes>
                             <webResources>
                                 <resource>
