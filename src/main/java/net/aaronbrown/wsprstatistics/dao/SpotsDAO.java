@@ -120,7 +120,7 @@ public class SpotsDAO {
         } else {
             Iterator<List<FieldValue>> iter = result.iterateAll();
             List<FieldValue> record = iter.next();
-            updated = new Date(record.get(0).getTimestampValue());
+            updated = new Date(record.get(0).getTimestampValue() / 1000);
         }
         return updated;
     }
