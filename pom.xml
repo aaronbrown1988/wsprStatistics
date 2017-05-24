@@ -123,7 +123,7 @@
 
                 <!-- optional -->
                 <configuration>
-                    <workingDirectory>src/main/webapp/app-ng4</workingDirectory>
+                    <workingDirectory>src/main/webapp/app</workingDirectory>
                 </configuration>
 
                 <executions>
@@ -174,11 +174,12 @@
                         <configuration>
                             <warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
                             <webXml>${project.basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
-                            <packagingIncludes>app-ng4/dist/*,WEB-INF/**,META-INF/**</packagingIncludes>
-                            <packagingExcludes>app/**/*,app-vue/**/*</packagingExcludes>
+                            <packagingExcludes>app/**/*</packagingExcludes>
+                            <packagingIncludes>app/dist/*,WEB-INF/**,META-INF/**</packagingIncludes>
+
                             <webResources>
                                 <resource>
-                                    <directory>${project.basedir}/src/main/webapp/app-ng4/dist</directory>
+                                    <directory>${project.basedir}/src/main/webapp/app/dist</directory>
                                     <targetPath>app</targetPath>
                                     <includes>
                                         <include>**/*</include>
