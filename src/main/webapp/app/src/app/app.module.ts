@@ -7,21 +7,29 @@ import {Country} from "./components/cards/country";
 import {Distance} from "./components/cards/distance";
 import {Logger} from "./services/logger.service";
 import {DistanceService} from "./services/distance.service";
+import {CallsignService} from "./services/callsign.service";
+import {Search} from "./components/search";
+import {PanelModule} from "primeng/primeng";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
         AppComponent,
         Country,
-        Distance
+      Distance,
+      Search
     ],
     imports: [
         BrowserModule,
-        FormsModule,
+      BrowserAnimationsModule,
+      FormsModule,
         HttpModule,
+      PanelModule
 
     ],
   providers: [Logger,
-    DistanceService
+    DistanceService,
+    CallsignService
   ],
     bootstrap: [AppComponent]
 })
