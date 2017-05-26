@@ -1,6 +1,8 @@
 import {Component} from "@angular/core";
 import {DistanceData} from "../../models/distanceData";
 import {DistanceService} from "../../services/distance.service";
+import {CallsignService} from "../../services/callsign.service";
+import {Logger} from "../../services/logger.service";
 
 
 @Component({
@@ -18,11 +20,11 @@ import {DistanceService} from "../../services/distance.service";
 <th>Max. </th>
 </thead>
 <tbody>
-  <tr *ngFor="let row of data">
-    <td>{{row.band}}</td>
-<td>{{row.average}}</td>
-<td>{{row.min}}</td>
-<td>{{row.max}}</td>
+  <tr *ngFor="let row of data | mapStatisticsToIterable">
+    <td>{{row.band }}</td>
+<td>{{row.average|number:3.0-3}}</td>
+<td>{{row.min|number:3.0-3}}</td>
+<td>{{row.max|number:3.0-3}}</td>
 </tr>
 </tbody>
 </table>
@@ -31,16 +33,22 @@ import {DistanceService} from "../../services/distance.service";
 
 })
 export class Distance {
-  data: DistanceData[]
+  data: DistanceData[];
 
-  constructor(private distanceService: DistanceService) {
+  constructor(private callsignService: CallsignService, private distanceService: DistanceService, private logger: Logger) {
+    callsignService.update$.subscribe(callsign => {
+      this.logger.log("Component subscribed and got " + callsign);
+      this.update(callsign)
+    })
   }
 
-  ngOnInit() {
-    this.distanceService.getDistance().subscribe(
-      data => this.data = data
-    )
+  update(callsign: string) {
+    this.distanceService.getDistance(callsign).subscribe(data => {
+      this.data = data
+    })
   }
+
 
 }
+
 

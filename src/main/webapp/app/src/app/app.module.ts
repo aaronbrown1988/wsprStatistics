@@ -11,13 +11,18 @@ import {CallsignService} from "./services/callsign.service";
 import {Search} from "./components/search";
 import {PanelModule} from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {mapToIterable} from "./pipes/mapToIterable.pipe";
+import {mapStatisticsToIterable} from "./pipes/mapStatisticsToIterable.pipe";
+import {CountryService} from "./services/country.service";
 
 @NgModule({
     declarations: [
         AppComponent,
         Country,
       Distance,
-      Search
+      Search,
+      mapToIterable,
+      mapStatisticsToIterable
     ],
     imports: [
         BrowserModule,
@@ -29,7 +34,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ],
   providers: [Logger,
     DistanceService,
-    CallsignService
+    CallsignService,
+    CountryService
   ],
     bootstrap: [AppComponent]
 })

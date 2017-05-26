@@ -1,4 +1,6 @@
-import {DistanceData} from "../models/distanceData";
+/**
+ * Created by aaron on 27/05/17.
+ */
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
@@ -10,8 +12,8 @@ import {Subscription} from "rxjs";
 
 
 @Injectable()
-export class DistanceService {
-  private distanceUrl = 'api/stats';  // URL to web API
+export class CountryService {
+  private countryUrl = 'api/country';  // URL to web API
 
   subscription: Subscription;
 
@@ -19,16 +21,16 @@ export class DistanceService {
   constructor(private http: Http, private callsignService: CallsignService, private logger: Logger) {
     this.subscription = this.callsignService.update$.subscribe(
       callsign => {
-        this.getDistance(callsign)
+        this.getCountries(callsign)
       });
     logger.log(this.subscription)
 
   }
 
 
-  public getDistance(call: string): Observable<DistanceData[]> {
-    this.logger.log("distance service has " + call);
-    return this.http.get(this.distanceUrl + '/' + call + '/distance/band/all')
+  public getCountries(call: string): Observable<any[]> {
+    this.logger.log("country service has " + call);
+    return this.http.get(this.countryUrl + '/' + call + '/all')
       .map(this.extractData);
 
   }

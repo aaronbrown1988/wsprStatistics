@@ -17,7 +17,9 @@ import {Logger} from "../services/logger.service";
 })
 
 export class Search {
-  private callsign: string
+  private callsign: string;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
   constructor(private callsignService: CallsignService, private logger: Logger) {
   }
@@ -26,8 +28,8 @@ export class Search {
     this.callsign = "";
   }
 
+
   setCallsign() {
     this.callsignService.setCallsign(this.callsign)
-    this.logger.log(this.callsign)
   }
 }

@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import {CallsignService} from "../../services/callsign.service";
+import {CountryService} from "../../services/country.service";
 
 @Component({
     selector: 'country',
@@ -10,9 +12,9 @@ import {Component} from "@angular/core";
 <th>Count</th>
 </thead>
 <tbody>
-  <tr ng-repeat="(key,value) in countryCtrl.data">
-  <td>{{key}}</td>
-<td>{{value}}</td>
+  <tr *ngFor="let row of data | mapStatisticsToIterable">
+  <td>{{row.key}}</td>
+<td>{{row.value}}</td>
 </tr>
 </tbody>
 </table>
@@ -20,5 +22,18 @@ import {Component} from "@angular/core";
       `
 })
 export class Country {
+  data: {};
+
+  constructor(private callsignService: CallsignService, private countryService: CountryService) {
+    callsignService.update$.subscribe(callsign => {
+      this.update(callsign)
+    })
+  }
+
+  update(callsign: string) {
+    this.countryService.getCountries(callsign).subscribe(data => {
+      this.data = data
+    })
+  }
 
 }
