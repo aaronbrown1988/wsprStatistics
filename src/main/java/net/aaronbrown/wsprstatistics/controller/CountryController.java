@@ -25,7 +25,14 @@ public class CountryController {
     @RequestMapping("/{callsign}/{band}")
     public
     @ResponseBody
-    Map<String, Double> countryByCallsignAndBand(@PathVariable String callsign, @PathVariable Integer band) {
+    Map<String, Double> countryByCallsignAndBand(@PathVariable String callsign, @PathVariable(required = false) Integer band) {
         return spotsDAO.getCountryByBand(callsign, band);
+    }
+
+    @RequestMapping("/{callsign}/all")
+    public
+    @ResponseBody
+    Map<String, Double> countryByCallsign(@PathVariable String callsign) {
+        return spotsDAO.getCountryByBand(callsign, null);
     }
 }
