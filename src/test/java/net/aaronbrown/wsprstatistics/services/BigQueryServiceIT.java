@@ -13,7 +13,7 @@ import static org.junit.Assert.assertFalse;
  * Created by aaron on 6/03/17.
  */
 @Ignore
-public class BigQueryServiceTest {
+public class BigQueryServiceIT {
     private BigQueryService bigQueryService;
 
     @Before

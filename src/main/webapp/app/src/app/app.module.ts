@@ -9,11 +9,17 @@ import {Logger} from "./services/logger.service";
 import {DistanceService} from "./services/distance.service";
 import {CallsignService} from "./services/callsign.service";
 import {Search} from "./components/search";
-import {PanelModule} from "primeng/primeng";
+import {PanelModule, MenuModule} from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {mapToIterable} from "./pipes/mapToIterable.pipe";
 import {mapStatisticsToIterable} from "./pipes/mapStatisticsToIterable.pipe";
 import {CountryService} from "./services/country.service";
+import {DashboardService} from "./services/dashboard.service";
+import {CallsignStatisticsComponent} from "./components/callsign-statistics/callsign-statistics.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {CountryStatisticsComponent} from "./components/country-statistics/country-statistics.component";
+import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {DistanceGraphComponent} from "./components/cards/distance-graph/distance-graph.component";
 
 @NgModule({
     declarations: [
@@ -22,20 +28,27 @@ import {CountryService} from "./services/country.service";
       Distance,
       Search,
       mapToIterable,
-      mapStatisticsToIterable
+      mapStatisticsToIterable,
+      CallsignStatisticsComponent,
+      DashboardComponent,
+      CountryStatisticsComponent,
+      SidebarComponent,
+      DistanceGraphComponent
     ],
     imports: [
         BrowserModule,
       BrowserAnimationsModule,
       FormsModule,
         HttpModule,
-      PanelModule
+      PanelModule,
+      MenuModule
 
     ],
   providers: [Logger,
     DistanceService,
     CallsignService,
-    CountryService
+    CountryService,
+    DashboardService
   ],
     bootstrap: [AppComponent]
 })

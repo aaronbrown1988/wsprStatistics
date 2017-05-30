@@ -12,7 +12,7 @@ import {CountryService} from "../../services/country.service";
 <th>Count</th>
 </thead>
 <tbody>
-  <tr *ngFor="let row of data | mapStatisticsToIterable">
+  <tr *ngFor="let row of data | mapToIterable">
   <td>{{row.key}}</td>
 <td>{{row.value}}</td>
 </tr>
