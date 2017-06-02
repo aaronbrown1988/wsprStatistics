@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/aaronbrown1988/wsprStatistics.svg?branch=master)](https://travis-ci.org/aaronbrown1988/wsprStatistics)
 
-A project manuplating historic wspr spots to produce interesting statistics and graphs
+A project manipulating historic wspr spots to produce interesting statistics and graphs
 
 To run the project locally without tomcat run: 
     
