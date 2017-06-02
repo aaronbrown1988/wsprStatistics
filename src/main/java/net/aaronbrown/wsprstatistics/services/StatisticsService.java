@@ -29,4 +29,23 @@ public class StatisticsService {
         }
         return stats;
     }
+
+    public Map<String, Double> countryByCallsign(String callsign) {
+        Map<String, Double> stats = (Map<String, Double>) cacheService.getObject(callsign + "-countriesAll");
+        if (stats == null) {
+            stats = spotsDAO.getCountryByBand(callsign, null);
+            cacheService.putObject(callsign + "countriesAll", stats);
+        }
+        return stats;
+    }
+
+    public Map<String, Double> countryByCallsignAndBand(String callsign, Integer band) {
+
+        Map<String, Double> stats = (Map<String, Double>) cacheService.getObject(callsign + "-countries-" + band);
+        if (stats == null) {
+            stats = spotsDAO.getCountryByBand(callsign, band);
+            cacheService.putObject(callsign + "-countries-" + band, stats);
+        }
+        return stats;
+    }
 }

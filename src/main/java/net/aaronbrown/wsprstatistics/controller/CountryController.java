@@ -1,6 +1,6 @@
 package net.aaronbrown.wsprstatistics.controller;
 
-import net.aaronbrown.wsprstatistics.dao.SpotsDAO;
+import net.aaronbrown.wsprstatistics.services.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -19,20 +19,20 @@ import java.util.Map;
 public class CountryController {
 
     @Autowired
-    private SpotsDAO spotsDAO;
+    private StatisticsService statisticsService;
 
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping("/{callsign}/{band}")
     public
     @ResponseBody
     Map<String, Double> countryByCallsignAndBand(@PathVariable String callsign, @PathVariable(required = false) Integer band) {
-        return spotsDAO.getCountryByBand(callsign, band);
+        return statisticsService.countryByCallsignAndBand(callsign, band);
     }
 
     @RequestMapping("/{callsign}/all")
     public
     @ResponseBody
     Map<String, Double> countryByCallsign(@PathVariable String callsign) {
-        return spotsDAO.getCountryByBand(callsign, null);
+        return statisticsService.countryByCallsign(callsign);
     }
 }

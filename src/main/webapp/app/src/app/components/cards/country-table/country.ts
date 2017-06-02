@@ -1,6 +1,8 @@
 import {Component} from "@angular/core";
-import {CallsignService} from "../../services/callsign.service";
-import {CountryService} from "../../services/country.service";
+import {CallsignService} from "../../../services/callsign.service";
+import {CountryService} from "../../../services/country.service";
+
+// todo Convert this to a data table from primefaces
 
 @Component({
     selector: 'country',

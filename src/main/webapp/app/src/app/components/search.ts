@@ -18,14 +18,11 @@ import {Logger} from "../services/logger.service";
 
 export class Search {
   private callsign: string;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
   constructor(private callsignService: CallsignService, private logger: Logger) {
   }
 
   ngOnInit() {
-    this.callsign = "";
   }
 
 

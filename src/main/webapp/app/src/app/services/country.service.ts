@@ -10,7 +10,7 @@ import {CallsignService} from "./callsign.service";
 import {Logger} from "./logger.service";
 import {Subscription} from "rxjs";
 
-
+// todo This service should really cache these results.
 @Injectable()
 export class CountryService {
   private countryUrl = 'api/country';  // URL to web API

@@ -1,10 +1,10 @@
 import {Component} from "@angular/core";
-import {DistanceData} from "../../models/distanceData";
-import {DistanceService} from "../../services/distance.service";
-import {CallsignService} from "../../services/callsign.service";
-import {Logger} from "../../services/logger.service";
+import {DistanceData} from "../../../models/distanceData";
+import {DistanceService} from "../../../services/distance.service";
+import {CallsignService} from "../../../services/callsign.service";
+import {Logger} from "../../../services/logger.service";
 
-
+// todo Convert this to a data table from primefaces
 @Component({
   selector: 'distance',
   template: `

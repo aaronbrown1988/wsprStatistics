@@ -1,5 +1,5 @@
 import {TestBed, inject} from "@angular/core/testing";
-import {DashboardService} from "./dashboard-service.service";
+import {DashboardService} from "./dashboard.service";
 
 describe('DashboardServiceService', () => {
   beforeEach(() => {
