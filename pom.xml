@@ -135,7 +135,7 @@
 
                 <!-- optional -->
                 <configuration>
-                    <workingDirectory>src/main/webapp/app</workingDirectory>
+                    <workingDirectory>src/main/frontend/app</workingDirectory>
                 </configuration>
 
                 <executions>
@@ -191,7 +191,7 @@
 
                             <webResources>
                                 <resource>
-                                    <directory>${project.basedir}/src/main/webapp/app/dist</directory>
+                                    <directory>${project.basedir}/src/main/frontend/app/dist</directory>
                                     <targetPath>app</targetPath>
                                     <includes>
                                         <include>**/*</include>

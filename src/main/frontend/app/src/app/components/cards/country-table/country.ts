@@ -5,8 +5,8 @@ import {CountryService} from "../../../services/country.service";
 // todo Convert this to a data table from primefaces
 
 @Component({
-    selector: 'country',
-    template: `
+  selector: 'country',
+  template: `
 <p-panel header="Country">
 <table class="table table-striped table-hover">
 <thead>

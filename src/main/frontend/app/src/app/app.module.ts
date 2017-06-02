@@ -22,35 +22,35 @@ import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {DistanceGraphComponent} from "./components/cards/distance-graph/distance-graph.component";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        Country,
-      Distance,
-      Search,
-      mapToIterable,
-      mapStatisticsToIterable,
-      CallsignStatisticsComponent,
-      DashboardComponent,
-      CountryStatisticsComponent,
-      SidebarComponent,
-      DistanceGraphComponent
-    ],
-    imports: [
-        BrowserModule,
-      BrowserAnimationsModule,
-      FormsModule,
-        HttpModule,
-      PanelModule,
-      MenuModule
+  declarations: [
+    AppComponent,
+    Country,
+    Distance,
+    Search,
+    mapToIterable,
+    mapStatisticsToIterable,
+    CallsignStatisticsComponent,
+    DashboardComponent,
+    CountryStatisticsComponent,
+    SidebarComponent,
+    DistanceGraphComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    PanelModule,
+    MenuModule
 
-    ],
+  ],
   providers: [Logger,
     DistanceService,
     CallsignService,
     CountryService,
     DashboardService
   ],
-    bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
