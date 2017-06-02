@@ -7,9 +7,9 @@ import {Country} from "./components/cards/country-table/country";
 import {Distance} from "./components/cards/distance-table/distance";
 import {Logger} from "./services/logger.service";
 import {DistanceService} from "./services/distance.service";
-import {CallsignService} from "./services/callsign.service";
+import {SearchParamService} from "./services/searchParam.service";
 import {Search} from "./components/search";
-import {PanelModule, MenuModule} from "primeng/primeng";
+import {PanelModule, MenuModule, DropdownModule} from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {mapToIterable} from "./pipes/mapToIterable.pipe";
 import {mapStatisticsToIterable} from "./pipes/mapStatisticsToIterable.pipe";
@@ -20,6 +20,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {CountryStatisticsComponent} from "./components/country-statistics/country-statistics.component";
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {DistanceGraphComponent} from "./components/cards/distance-graph/distance-graph.component";
+import {BandSelectComponent} from "./components/band-select/band-select.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {DistanceGraphComponent} from "./components/cards/distance-graph/distance
     DashboardComponent,
     CountryStatisticsComponent,
     SidebarComponent,
-    DistanceGraphComponent
+    DistanceGraphComponent,
+    BandSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -41,12 +43,13 @@ import {DistanceGraphComponent} from "./components/cards/distance-graph/distance
     FormsModule,
     HttpModule,
     PanelModule,
-    MenuModule
+    MenuModule,
+    DropdownModule
 
   ],
   providers: [Logger,
     DistanceService,
-    CallsignService,
+    SearchParamService,
     CountryService,
     DashboardService
   ],

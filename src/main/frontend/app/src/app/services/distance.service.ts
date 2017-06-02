@@ -4,9 +4,10 @@ import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
-import {CallsignService} from "./callsign.service";
+import {SearchParamService} from "./searchParam.service";
 import {Logger} from "./logger.service";
 import {Subscription} from "rxjs";
+import {SearchParams} from "../models/search-params";
 
 
 @Injectable()
@@ -16,8 +17,8 @@ export class DistanceService {
   subscription: Subscription;
 
 
-  constructor(private http: Http, private callsignService: CallsignService, private logger: Logger) {
-    this.subscription = this.callsignService.update$.subscribe(
+  constructor(private http: Http, private searchParamService: SearchParamService, private logger: Logger) {
+    this.subscription = this.searchParamService.update$.subscribe(
       callsign => {
         this.getDistance(callsign)
       });
@@ -26,9 +27,9 @@ export class DistanceService {
   }
 
 
-  public getDistance(call: string): Observable<DistanceData[]> {
-    this.logger.log("distance service has " + call);
-    return this.http.get(this.distanceUrl + '/' + call + '/distance/band/all')
+  public getDistance(update: SearchParams): Observable<DistanceData[]> {
+    this.logger.log("distance service has " + update.callsign);
+    return this.http.get(this.distanceUrl + '/' + update.callsign + '/distance/band/' + update.band)
       .map(this.extractData);
 
   }

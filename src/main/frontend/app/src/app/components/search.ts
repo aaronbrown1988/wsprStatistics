@@ -2,7 +2,7 @@
  * Created by aaron on 24/05/17.
  */
 import {Component} from "@angular/core";
-import {CallsignService} from "../services/callsign.service";
+import {SearchParamService} from "../services/searchParam.service";
 import {Logger} from "../services/logger.service";
 
 
@@ -19,7 +19,7 @@ import {Logger} from "../services/logger.service";
 export class Search {
   private callsign: string;
 
-  constructor(private callsignService: CallsignService, private logger: Logger) {
+  constructor(private callsignService: SearchParamService, private logger: Logger) {
   }
 
   ngOnInit() {

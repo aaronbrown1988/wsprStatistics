@@ -1,8 +1,9 @@
 import {Component} from "@angular/core";
 import {DistanceData} from "../../../models/distanceData";
 import {DistanceService} from "../../../services/distance.service";
-import {CallsignService} from "../../../services/callsign.service";
+import {SearchParamService} from "../../../services/searchParam.service";
 import {Logger} from "../../../services/logger.service";
+import {SearchParams} from "../../../models/search-params";
 
 // todo Convert this to a data table from primefaces
 @Component({
@@ -35,15 +36,15 @@ import {Logger} from "../../../services/logger.service";
 export class Distance {
   data: DistanceData[];
 
-  constructor(private callsignService: CallsignService, private distanceService: DistanceService, private logger: Logger) {
-    callsignService.update$.subscribe(callsign => {
-      this.logger.log("Component subscribed and got " + callsign);
-      this.update(callsign)
+  constructor(private callsignService: SearchParamService, private distanceService: DistanceService, private logger: Logger) {
+    callsignService.update$.subscribe(update => {
+      this.logger.log("Component subscribed and got " + update.callsign);
+      this.updateData(update)
     })
   }
 
-  update(callsign: string) {
-    this.distanceService.getDistance(callsign).subscribe(data => {
+  updateData(update: SearchParams) {
+    this.distanceService.getDistance(update).subscribe(data => {
       this.data = data
     })
   }

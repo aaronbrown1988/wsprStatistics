@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
-import {CallsignService} from "../../../services/callsign.service";
+import {SearchParamService} from "../../../services/searchParam.service";
 import {CountryService} from "../../../services/country.service";
+import {SearchParams} from "../../../models/search-params";
 
 // todo Convert this to a data table from primefaces
 
@@ -26,14 +27,14 @@ import {CountryService} from "../../../services/country.service";
 export class Country {
   data: {};
 
-  constructor(private callsignService: CallsignService, private countryService: CountryService) {
-    callsignService.update$.subscribe(callsign => {
-      this.update(callsign)
+  constructor(private callsignService: SearchParamService, private countryService: CountryService) {
+    callsignService.update$.subscribe(update => {
+      this.updateData(update)
     })
   }
 
-  update(callsign: string) {
-    this.countryService.getCountries(callsign).subscribe(data => {
+  updateData(update: SearchParams) {
+    this.countryService.getCountries(update).subscribe(data => {
       this.data = data
     })
   }

@@ -6,9 +6,10 @@ import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
-import {CallsignService} from "./callsign.service";
+import {SearchParamService} from "./searchParam.service";
 import {Logger} from "./logger.service";
 import {Subscription} from "rxjs";
+import {SearchParams} from "../models/search-params";
 
 // todo This service should really cache these results.
 @Injectable()
@@ -18,19 +19,19 @@ export class CountryService {
   subscription: Subscription;
 
 
-  constructor(private http: Http, private callsignService: CallsignService, private logger: Logger) {
+  constructor(private http: Http, private callsignService: SearchParamService, private logger: Logger) {
     this.subscription = this.callsignService.update$.subscribe(
-      callsign => {
-        this.getCountries(callsign)
+      update => {
+        this.getCountries(update)
       });
     logger.log(this.subscription)
 
   }
 
 
-  public getCountries(call: string): Observable<any[]> {
-    this.logger.log("country service has " + call);
-    return this.http.get(this.countryUrl + '/' + call + '/all')
+  public getCountries(update: SearchParams): Observable<any[]> {
+    this.logger.log("country service has " + update.callsign);
+    return this.http.get(this.countryUrl + '/' + update.callsign + '/' + update.band)
       .map(this.extractData);
 
   }
