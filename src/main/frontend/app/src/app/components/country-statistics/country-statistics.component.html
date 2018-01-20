@@ -1,3 +1,18 @@
-<p>
-  country-statistics works!
-</p>
+<div class="ui-g">
+  <div class="ui-g-12, ui-md-6 ui-lg-3">
+    <p-dropdown [options]="countryList" [(ngModel)]="txLocation" (onChange)="onChange()"></p-dropdown>
+    <br/> <!-- Change these to dropdowns or something-->
+    <p-dropdown [options]="countryList" [(ngModel)]="rxLocation" (onChange)="onChange()"></p-dropdown>
+    <br/>
+    {{countryList}}
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-g-12, ui-md-6">
+    Time of day Here
+  </div>
+  <div class="ui-g-12, ui-md-6">
+    Band Count here
+  </div>
+</div>

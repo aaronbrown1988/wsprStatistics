@@ -19,7 +19,7 @@ export class BandSelectComponent implements OnInit {
     this.bands.push({
       label: "All Bands",
       value: "all"
-    });;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    });
     this.bands.push({label: "160m", value: 1});
     this.bands.push({label: "80m", value: 3});
     this.bands.push({label: "60m", value: 5});

@@ -1,5 +1,6 @@
 package net.aaronbrown.wsprstatistics.controller;
 
+import net.aaronbrown.wsprstatistics.services.CountryService;
 import net.aaronbrown.wsprstatistics.services.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,6 +22,9 @@ public class CountryController {
 
     @Autowired
     private StatisticsService statisticsService;
+
+    @Autowired
+    private CountryService countryService;
 
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping("/{callsign}/{band}")
@@ -34,5 +39,26 @@ public class CountryController {
     @ResponseBody
     Map<String, Double> countryByCallsign(@PathVariable String callsign) {
         return statisticsService.countryByCallsign(callsign);
+    }
+
+    @RequestMapping("/list")
+    public
+    @ResponseBody
+    List<String> countryList() {
+        return countryService.getCountryList();
+    }
+
+    @RequestMapping("/band/{tx}/{rx}")
+    public
+    @ResponseBody
+    Map<String, Double> bandForCountry(@PathVariable String tx, @PathVariable String rx) {
+        return null;
+    }
+
+    @RequestMapping("/time/{tx}/{rx}")
+    public
+    @ResponseBody
+    Map<String, Double> timeForCountry(@PathVariable String tx, @PathVariable String rx) {
+        return null;
     }
 }

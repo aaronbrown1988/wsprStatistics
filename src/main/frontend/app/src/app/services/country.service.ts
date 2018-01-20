@@ -36,6 +36,20 @@ export class CountryService {
 
   }
 
+  public getTimeData(tx: string, rx: string): Observable<any[]> {
+    this.logger.log("tx: " + tx + " rx: " + rx);
+    return this.http.get(this.countryUrl + '/time/' + tx + '/' + rx).map(this.extractData)
+  }
+
+  public getBandData(tx: string, rx: string): Observable<any[]> {
+    this.logger.log("tx: " + tx + " rx: " + rx);
+    return this.http.get(this.countryUrl + '/band/' + tx + '/' + rx).map(this.extractData)
+  }
+
+  public getCountryList(): Observable<any[]> {
+    return this.http.get(this.countryUrl + '/list').map(this.extractData);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data || body || {};
