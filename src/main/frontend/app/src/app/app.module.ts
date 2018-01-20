@@ -8,7 +8,7 @@ import {Distance} from "./components/cards/distance-table/distance";
 import {Logger} from "./services/logger.service";
 import {DistanceService} from "./services/distance.service";
 import {SearchParamService} from "./services/searchParam.service";
-import {Search} from "./components/search";
+import {Search} from "./components/callsignSearch";
 import {PanelModule, MenuModule, DropdownModule} from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {mapToIterable} from "./pipes/mapToIterable.pipe";

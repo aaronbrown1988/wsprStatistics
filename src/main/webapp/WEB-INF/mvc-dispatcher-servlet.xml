@@ -36,4 +36,5 @@
 
     <mvc:resources mapping="/**" location="/app/"></mvc:resources>
 
+    <mvc:redirect-view-controller path="/" redirect-url="/index.html"></mvc:redirect-view-controller>
 </beans>
