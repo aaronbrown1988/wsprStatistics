@@ -33,15 +33,7 @@ public class SpotsDAO {
             queryString = queryString + "  LIMT TO 1000";
         }
 
-        QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
-                        //.addNamedParameter("band", QueryParameterValue.int64(band))
-                        // Standard SQL syntax is required for parameterized queries.
-                        // See: https://cloud.google.com/bigquery/sql-reference/
-                        .setUseLegacySql(true)
-                        .build();
-        // Execute the query.
-        QueryResult result = bigQueryService.runQuery(queryRequest);
+        QueryResult result = bigQueryService.runQuery(queryString);
         Iterator<List<FieldValue>> iter = result.iterateAll();
 
         List<WSPRSpot> spots = new ArrayList<>();
@@ -71,16 +63,7 @@ public class SpotsDAO {
         String queryString = "SELECT band,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
                 "where Call_Sign='" + callSign + "' and band > 0 group by band";
-
-        QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
-                        //.addNamedParameter("band", QueryParameterValue.int64(band))
-                        // Standard SQL syntax is required for parameterized queries.
-                        // See: https://cloud.google.com/bigquery/sql-reference/
-                        .setUseLegacySql(true)
-                        .build();
-        // Execute the query.
-        QueryResult result = bigQueryService.runQuery(queryRequest);
+        QueryResult result = bigQueryService.runQuery(queryString);
         return getStringStatisticsMap(result);
     }
 
@@ -89,15 +72,7 @@ public class SpotsDAO {
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
                 "where Call_Sign='" + callSign + "' and band=" + band + " and spot_time between " + start + " and " + end + " group by h";
 
-        QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
-                        //.addNamedParameter("band", QueryParameterValue.int64(band))
-                        // Standard SQL syntax is required for parameterized queries.
-                        // See: https://cloud.google.com/bigquery/sql-reference/
-                        .setUseLegacySql(true)
-                        .build();
-        // Execute the query.
-        QueryResult result = bigQueryService.runQuery(queryRequest);
+        QueryResult result = bigQueryService.runQuery(queryString);
         return getStringStatisticsMap(result);
     }
 
@@ -105,16 +80,7 @@ public class SpotsDAO {
         Date updated;
         String queryString = "SELECT max(Timestamp)" +
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] ";
-
-        QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
-                        //.addNamedParameter("band", QueryParameterValue.int64(band))
-                        // Standard SQL syntax is required for parameterized queries.
-                        // See: https://cloud.google.com/bigquery/sql-reference/
-                        .setUseLegacySql(true)
-                        .build();
-        // Execute the query.
-        QueryResult result = bigQueryService.runQuery(queryRequest);
+        QueryResult result = bigQueryService.runQuery(queryString);
         if (result.getTotalRows() != 1) {
             updated = null;
         } else {
@@ -147,12 +113,7 @@ public class SpotsDAO {
                 "left join [wsprstats-163301:callsign_country.big_cty] as ref2 on data.c = ref2.prefix\n" +
                 "left join [wsprstats-163301:callsign_country.big_cty] as ref3 on data.d = ref3.prefix) group by country order by f0_ desc";
 
-        QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
-                        .setUseLegacySql(true)
-                        .build();
-        // Execute the query.
-        QueryResult result = bigQueryService.runQuery(queryRequest);
+        QueryResult result = bigQueryService.runQuery(queryString);
 
         Iterator<List<FieldValue>> iter = result.iterateAll();
 
@@ -163,6 +124,9 @@ public class SpotsDAO {
 
         return countries;
     }
+
+
+
 
 
 

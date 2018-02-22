@@ -25,7 +25,16 @@ public class BigQueryService {
     }
 
 
-    public QueryResult runQuery(QueryRequest queryRequest) {
+    public QueryRequest buildQuery(String queryString) {
+		QueryRequest queryRequest =
+                QueryRequest.newBuilder(queryString)
+                        .setUseLegacySql(true)
+                        .build();
+		return queryRequest;
+	}
+
+    public QueryResult runQuery(String query) {
+        QueryRequest queryRequest = buildQuery(query);
         QueryResponse response = bigQuery.query(queryRequest);
 
         try {
