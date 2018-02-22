@@ -53,7 +53,6 @@ public class BigQueryService {
         }
 
         QueryResult result = response.getResult();
-        Iterator<List<FieldValue>> iter = result.iterateAll();
 
         return result;
     }

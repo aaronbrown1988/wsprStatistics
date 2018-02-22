@@ -27,15 +27,8 @@ public class BigQueryServiceIT {
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
                 "where Call_Sign='M1GEO' group by band";
 
-        QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
-                        //.addNamedParameter("band", QueryParameterValue.int64(band))
-                        // Standard SQL syntax is required for parameterized queries.
-                        // See: https://cloud.google.com/bigquery/sql-reference/
-                        .setUseLegacySql(true)
-                        .build();
         // Execute the query.
-        QueryResult result = bigQueryService.runQuery(queryRequest);
+        QueryResult result = bigQueryService.runQuery(queryString);
         assertFalse(result.toString().isEmpty());
     }
 
