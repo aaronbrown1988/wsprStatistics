@@ -20,45 +20,6 @@ public class SpotsDAO {
     @Resource
     private BigQueryService bigQueryService;
 
-    public List<WSPRSpot> findByCallsign(String callSign) {
-        return findByCallsign(callSign, true);
-    }
-
-
-    public List<WSPRSpot> findByCallsign(String callSign, Boolean limit) {
-        String queryString = "SELECT * " +
-                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
-                "where Call_Sign='" + callSign + "'";
-        if (limit != false) {
-            queryString = queryString + "  LIMT TO 1000";
-        }
-
-        QueryResult result = bigQueryService.runQuery(queryString);
-        Iterator<List<FieldValue>> iter = result.iterateAll();
-
-        List<WSPRSpot> spots = new ArrayList<>();
-        Integer i = 0;
-
-        while (iter.hasNext()) {
-            List<FieldValue> record = iter.next();
-            WSPRSpot currentSpot = new WSPRSpot();
-            currentSpot.setSpotID(record.get(0).getLongValue());
-            currentSpot.setSpotTime(new Date(Long.parseLong(record.get(++i).getStringValue())));
-            currentSpot.setReporter(record.get(++i).getStringValue());
-            currentSpot.setReportersLocator(record.get(++i).getStringValue());
-            currentSpot.setSnr(Integer.parseInt(record.get(++i).getStringValue()));
-            currentSpot.setFrequency(Double.parseDouble(record.get(++i).getStringValue()));
-            currentSpot.setCallsign(record.get(++i).getStringValue());
-            currentSpot.setTxLocator(record.get(++i).getStringValue());
-            currentSpot.setTxPower(Double.parseDouble(record.get(++i).getStringValue()));
-            currentSpot.setDrift(Double.parseDouble(record.get(++i).getStringValue()));
-            currentSpot.setDistance(Double.parseDouble(record.get(++i).getStringValue()));
-            currentSpot.setAzimuth(Double.parseDouble(record.get(++i).getStringValue()));
-            currentSpot.setBand(Integer.parseInt(record.get(++i).getStringValue()));
-        }
-        return spots;
-    }
-
     public Map<String, Statistics> statisticsByBand(String callSign) {
         String queryString = "SELECT band,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
@@ -124,11 +85,6 @@ public class SpotsDAO {
 
         return countries;
     }
-
-
-
-
-
 
     private Map<String, Statistics> getStringStatisticsMap(QueryResult result) {
         Iterator<List<FieldValue>> iter = result.iterateAll();
