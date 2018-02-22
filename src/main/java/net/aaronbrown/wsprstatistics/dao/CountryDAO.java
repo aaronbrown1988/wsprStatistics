@@ -42,6 +42,13 @@ public class CountryDAO {
 
     }
 
+    public Map<String,Double> bandForCountry(String tx, String rx) {
+        //TODO determine the correct query for here
+        String queryString = "Select * from [wsprstats-163301]";
+
+        return null;
+    }
+
     public void save(Country country) {
     }
 
