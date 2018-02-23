@@ -4,10 +4,10 @@ maven-build:
   script: "mvn package -B"
   cache:
     paths:
-      - src/main/frontend/node/
-      - src/main/frontend/node_modules/
-      - $HOME/.m2/
-      - $HOME/.npm/
+      - src/main/frontend/node/*
+      - src/main/frontend/node_modules/*
+      - $HOME/.m2/*
+      - $HOME/.npm/*
   artifacts:
     paths:
       - target/*.war
