@@ -12,5 +12,13 @@
 hs_err_pid*
 
 target/*
+#IntelliJ Things
 .idea/*
+wsprStatistics.iml
 node_modules/*
+
+#VScode things
+.vscode/*
+.settings/*
+.project
+.classpath
