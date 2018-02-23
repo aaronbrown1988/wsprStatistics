@@ -2,6 +2,11 @@ maven-build:
   image: maven:3-jdk-8
   stage: build
   script: "mvn package -B"
+  cache:
+    paths:
+      - src/main/frontend/node
+      - src/main/frontend/node_modules
+
   artifacts:
     paths:
-      - target/*.jar
+      - target/*.war
