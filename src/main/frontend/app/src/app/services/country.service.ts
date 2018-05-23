@@ -3,12 +3,10 @@
  */
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
-import {Observable} from "rxjs/Observable";
-import "rxjs/add/operator/catch";
-import "rxjs/add/operator/map";
+import {Observable, Subscription} from "rxjs";
+import {map} from "rxjs/operators"
 import {SearchParamService} from "./searchParam.service";
 import {Logger} from "./logger.service";
-import {Subscription} from "rxjs";
 import {SearchParams} from "../models/search-params";
 
 // todo This service should really cache these results.
@@ -32,22 +30,21 @@ export class CountryService {
   public getCountries(update: SearchParams): Observable<any[]> {
     this.logger.log("country service has " + update.callsign);
     return this.http.get(this.countryUrl + '/' + update.callsign + '/' + update.band)
-      .map(this.extractData);
-
+    .pipe(map(this.extractData))
   }
 
   public getTimeData(tx: string, rx: string): Observable<any[]> {
     this.logger.log("tx: " + tx + " rx: " + rx);
-    return this.http.get(this.countryUrl + '/time/' + tx + '/' + rx).map(this.extractData)
+    return this.http.get(this.countryUrl + '/time/' + tx + '/' + rx).pipe(map(this.extractData))
   }
 
   public getBandData(tx: string, rx: string): Observable<any[]> {
     this.logger.log("tx: " + tx + " rx: " + rx);
-    return this.http.get(this.countryUrl + '/band/' + tx + '/' + rx).map(this.extractData)
+    return this.http.get(this.countryUrl + '/band/' + tx + '/' + rx).pipe(map(this.extractData))
   }
 
   public getCountryList(): Observable<any[]> {
-    return this.http.get(this.countryUrl + '/list').map(this.extractData);
+    return this.http.get(this.countryUrl + '/list').pipe(map(this.extractData))
   }
 
   private extractData(res: Response) {

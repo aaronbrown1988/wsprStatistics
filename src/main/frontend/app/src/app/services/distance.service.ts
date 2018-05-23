@@ -1,13 +1,11 @@
 import {DistanceData} from "../models/distanceData";
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
-import {Observable} from "rxjs/Observable";
-import "rxjs/add/operator/catch";
-import "rxjs/add/operator/map";
+import {Observable, Subscription} from "rxjs";
 import {SearchParamService} from "./searchParam.service";
 import {Logger} from "./logger.service";
-import {Subscription} from "rxjs";
 import {SearchParams} from "../models/search-params";
+import { map } from "rxjs/operators";
 
 
 @Injectable()
@@ -30,7 +28,7 @@ export class DistanceService {
   public getDistance(update: SearchParams): Observable<DistanceData[]> {
     this.logger.log("distance service has " + update.callsign);
     return this.http.get(this.distanceUrl + '/' + update.callsign + '/distance/band/' + update.band)
-      .map(this.extractData);
+      .pipe(map(this.extractData))
 
   }
 
