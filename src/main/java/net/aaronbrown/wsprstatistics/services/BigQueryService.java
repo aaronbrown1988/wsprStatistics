@@ -21,40 +21,22 @@ public class BigQueryService {
 
     public BigQueryService() {
         bigQuery =
-                new BigQueryOptions.DefaultBigqueryFactory().create(BigQueryOptions.getDefaultInstance());
+                BigQueryOptions.getDefaultInstance().getService();
     }
 
 
-    public QueryRequest buildQuery(String queryString) {
-		QueryRequest queryRequest =
-                QueryRequest.newBuilder(queryString)
+    public QueryJobConfiguration buildQuery(String queryString) {
+		QueryJobConfiguration queryRequest =
+        QueryJobConfiguration.newBuilder(queryString)
                         .setUseLegacySql(true)
                         .build();
 		return queryRequest;
 	}
 
-    public QueryResult runQuery(String query) {
-        QueryRequest queryRequest = buildQuery(query);
-        QueryResponse response = bigQuery.query(queryRequest);
-
-        try {
-            // Wait for the job to finish (if the query takes more than 10 seconds to complete).
-            while (!response.jobCompleted()) {
-                Thread.sleep(1000);
-                response = bigQuery.getQueryResults(response.getJobId());
-            }
-        } catch (InterruptedException exp) {
-            LOGGER.error("I got interrupted waiting for the query to return", exp);
-        }
-
-        if (response.hasErrors()) {
-            throw new RuntimeException(
-                    response.getExecutionErrors().toString());
-        }
-
-        QueryResult result = response.getResult();
-
-        return result;
+    public TableResult runQuery(String query) throws InterruptedException{
+        QueryJobConfiguration queryRequest = buildQuery(query);
+    
+        return bigQuery.query(queryRequest);
     }
 
 }

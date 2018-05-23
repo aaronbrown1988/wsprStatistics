@@ -1,8 +1,9 @@
 package net.aaronbrown.wsprstatistics.dao;
 
 import com.google.cloud.bigquery.FieldValue;
-import com.google.cloud.bigquery.QueryRequest;
-import com.google.cloud.bigquery.QueryResult;
+import com.google.cloud.bigquery.FieldValueList;
+import com.google.cloud.bigquery.TableResult;
+
 import net.aaronbrown.wsprstatistics.models.Country;
 import net.aaronbrown.wsprstatistics.services.BigQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,10 @@ public class CountryDAO {
     public List<String> countryList() {
         String queryString = "SELECT country,count(*) FROM [wsprstats-163301:callsign_country.big_cty]  group by country";
 
-        QueryResult result = bigQueryService.runQuery(queryString);
+        TableResult result = bigQueryService.runQuery(queryString);
 
         List<String> countryList = new ArrayList<>();
-        Iterator<List<FieldValue>> iter = result.iterateAll();
+        Iterable<FieldValueList> iter = result.iterateAll();
         while (iter.hasNext()) {
             List<FieldValue> record = iter.next();
             if (!record.get(0).isNull()) {
