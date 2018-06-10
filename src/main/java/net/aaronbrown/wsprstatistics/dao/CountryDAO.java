@@ -3,14 +3,12 @@ package net.aaronbrown.wsprstatistics.dao;
 import com.google.cloud.bigquery.FieldValue;
 import com.google.cloud.bigquery.FieldValueList;
 import com.google.cloud.bigquery.TableResult;
-
 import net.aaronbrown.wsprstatistics.models.Country;
 import net.aaronbrown.wsprstatistics.services.BigQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -33,8 +31,7 @@ public class CountryDAO {
 
         List<String> countryList = new ArrayList<>();
         Iterable<FieldValueList> iter = result.iterateAll();
-        while (iter.hasNext()) {
-            List<FieldValue> record = iter.next();
+        for (List<FieldValue> record : iter) {
             if (!record.get(0).isNull()) {
                 countryList.add(record.get(0).getStringValue());
             }

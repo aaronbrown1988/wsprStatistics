@@ -142,16 +142,15 @@
                 <executions>
 
 
-                    <!-- <execution>
+                    <execution>
                         <id>install node and npm</id>
                         <goals>
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
                             <nodeVersion>v8.11.2</nodeVersion>
-                            <npmVersion>6.0.1</npmVersion>
                         </configuration>
-                    </execution> -->
+                    </execution>
 
                     <execution>
                         <id>npm install</id>

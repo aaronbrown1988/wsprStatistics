@@ -1,12 +1,12 @@
 package net.aaronbrown.wsprstatistics.services;
 
-import com.google.cloud.bigquery.*;
+import com.google.cloud.bigquery.BigQuery;
+import com.google.cloud.bigquery.BigQueryOptions;
+import com.google.cloud.bigquery.QueryJobConfiguration;
+import com.google.cloud.bigquery.TableResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by aaron on 6/03/17.
@@ -33,10 +33,13 @@ public class BigQueryService {
 		return queryRequest;
 	}
 
-    public TableResult runQuery(String query) throws InterruptedException{
-        QueryJobConfiguration queryRequest = buildQuery(query);
-    
-        return bigQuery.query(queryRequest);
+    public TableResult runQuery(String query) {
+        try {
+            QueryJobConfiguration queryRequest = buildQuery(query);
+            return bigQuery.query(queryRequest);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }

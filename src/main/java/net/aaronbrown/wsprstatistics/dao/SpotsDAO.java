@@ -3,16 +3,15 @@ package net.aaronbrown.wsprstatistics.dao;
 import com.google.cloud.bigquery.FieldValue;
 import com.google.cloud.bigquery.FieldValueList;
 import com.google.cloud.bigquery.TableResult;
-
 import net.aaronbrown.wsprstatistics.models.Statistics;
-import net.aaronbrown.wsprstatistics.models.WSPRSpot;
 import net.aaronbrown.wsprstatistics.services.BigQueryService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by aaron on 1/04/17.
@@ -27,7 +26,7 @@ public class SpotsDAO {
         String queryString = "SELECT band,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
                 "where Call_Sign='" + callSign + "' and band > 0 group by band";
-                TableResult result = bigQueryService.runQuery(queryString);
+        TableResult result = bigQueryService.runQuery(queryString);
         return getStringStatisticsMap(result);
     }
 
@@ -41,7 +40,7 @@ public class SpotsDAO {
     }
 
     public Date lastUpdated() {
-        Date updated;
+        Date updated = null;
         String queryString = "SELECT max(Timestamp)" +
                 "FROM [dataproc-fun:wsprnet.all_wsprnet_data] ";
         TableResult result = bigQueryService.runQuery(queryString);
@@ -49,8 +48,9 @@ public class SpotsDAO {
             updated = null;
         } else {
             Iterable<FieldValueList> iter = result.iterateAll();
-            List<FieldValue> record = iter.
-            updated = new Date(record.get(0).getTimestampValue() / 1000);
+            for (List<FieldValue> record : iter) {
+                updated = new Date(record.get(0).getTimestampValue() / 1000);
+            }
         }
         return updated;
     }
@@ -77,12 +77,10 @@ public class SpotsDAO {
                 "left join [wsprstats-163301:callsign_country.big_cty] as ref2 on data.c = ref2.prefix\n" +
                 "left join [wsprstats-163301:callsign_country.big_cty] as ref3 on data.d = ref3.prefix) group by country order by f0_ desc";
 
-                TableResult result = bigQueryService.runQuery(queryString);
+        TableResult result = bigQueryService.runQuery(queryString);
 
-                Iterable<FieldValueList> iter = result.iterateAll();
-
-        while (iter.hasNext()) {
-            List<FieldValue> record = iter.next();
+        Iterable<FieldValueList> iter = result.iterateAll();
+        for (List<FieldValue> record : iter) {
             countries.put(record.get(0).getStringValue(), record.get(1).getDoubleValue());
         }
 
@@ -96,13 +94,13 @@ public class SpotsDAO {
 
         for (FieldValueList row : iter) {
             Statistics current = new Statistics();
-                current.setAverage(row.get(1).isNull() ? 0 : row.get(1).getDoubleValue());
-                current.setMax(row.get(2).isNull() ? 0 : row.get(2).getDoubleValue());
-                current.setMin(row.get(3).isNull() ? 0 : row.get(3).getDoubleValue());
-                current.setCount(row.get(4).isNull() ? 0 : row.get(4).getDoubleValue());
-                current.setVarience(row.get(5).isNull() ? 0 : row.get(5).getDoubleValue());
-                stats.put(row.get(0).getStringValue(), current);
-            }
+            current.setAverage(row.get(1).isNull() ? 0 : row.get(1).getDoubleValue());
+            current.setMax(row.get(2).isNull() ? 0 : row.get(2).getDoubleValue());
+            current.setMin(row.get(3).isNull() ? 0 : row.get(3).getDoubleValue());
+            current.setCount(row.get(4).isNull() ? 0 : row.get(4).getDoubleValue());
+            current.setVarience(row.get(5).isNull() ? 0 : row.get(5).getDoubleValue());
+            stats.put(row.get(0).getStringValue(), current);
+        }
         return stats;
     }
 

@@ -1,7 +1,6 @@
 package net.aaronbrown.wsprstatistics.services;
 
-import com.google.cloud.bigquery.QueryRequest;
-import com.google.cloud.bigquery.QueryResult;
+import com.google.cloud.bigquery.TableResult;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -28,7 +27,7 @@ public class BigQueryServiceIT {
                 "where Call_Sign='M1GEO' group by band";
 
         // Execute the query.
-        QueryResult result = bigQueryService.runQuery(queryString);
+        TableResult result = bigQueryService.runQuery(queryString);
         assertFalse(result.toString().isEmpty());
     }
 
