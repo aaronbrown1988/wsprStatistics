@@ -25,7 +25,7 @@ public class CountryDAO {
     private static final Logger LOG = Logger.getLogger("CountryDao");
 
     public List<String> countryList() {
-        String queryString = "SELECT country,count(*) FROM [wsprstats-163301:callsign_country.big_cty]  group by country";
+        String queryString = "SELECT country,count(*) FROM [wsprstats-163301:reference_data.big_cty]  group by country";
 
         TableResult result = bigQueryService.runQuery(queryString);
 

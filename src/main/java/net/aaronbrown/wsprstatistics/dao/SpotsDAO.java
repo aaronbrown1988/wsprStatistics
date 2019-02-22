@@ -24,7 +24,7 @@ public class SpotsDAO {
 
     public Map<String, Statistics> statisticsByBand(String callSign) {
         String queryString = "SELECT band,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
-                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
+                "FROM [wsprstats-163301:wspr_data.spot_table] " +
                 "where Call_Sign='" + callSign + "' and band > 0 group by band";
         TableResult result = bigQueryService.runQuery(queryString);
         return getStringStatisticsMap(result);
@@ -32,7 +32,7 @@ public class SpotsDAO {
 
     public Map<String, Statistics> statisticsByHour(String callSign, Integer band, Date start, Date end) {
         String queryString = "SELECT hour(spot_time) as h,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
-                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
+                "FROM [wsprstats-163301:wspr_data.spot_table] " +
                 "where Call_Sign='" + callSign + "' and band=" + band + " and spot_time between " + start + " and " + end + " group by h";
 
         TableResult result = bigQueryService.runQuery(queryString);
@@ -42,7 +42,7 @@ public class SpotsDAO {
     public Date lastUpdated() {
         Date updated = null;
         String queryString = "SELECT max(Timestamp)" +
-                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] ";
+                "FROM [wsprstats-163301:wspr_data.spot_table] ";
         TableResult result = bigQueryService.runQuery(queryString);
         if (result.getTotalRows() != 1) {
             updated = null;
@@ -71,11 +71,11 @@ public class SpotsDAO {
                 " else 'Unknown'" +
                 "end as country, count(data.spot_id)\n" +
                 "from (select * from (select spot_id, substr(reporter,0,1) as a,substr(reporter,0,2)as b,substr(reporter,0,3)as c,substr(reporter,0,4)as d \n" +
-                "from [dataproc-fun:wsprnet.all_wsprnet_data] where call_sign = '" + callsign + "'  " + bandCriteria + " ) as data\n" +
-                "left join [wsprstats-163301:callsign_country.big_cty] as ref on data.a = ref.prefix\n" +
-                "left join [wsprstats-163301:callsign_country.big_cty] as ref1 on data.b = ref1.prefix \n" +
-                "left join [wsprstats-163301:callsign_country.big_cty] as ref2 on data.c = ref2.prefix\n" +
-                "left join [wsprstats-163301:callsign_country.big_cty] as ref3 on data.d = ref3.prefix) group by country order by f0_ desc";
+                "from [wsprstats-163301:wspr_data.spot_table] where call_sign = '" + callsign + "'  " + bandCriteria + " ) as data\n" +
+                "left join [sprstats-163301:reference_data.big_cty] as ref on data.a = ref.prefix\n" +
+                "left join [sprstats-163301:reference_data.big_cty] as ref1 on data.b = ref1.prefix \n" +
+                "left join [sprstats-163301:reference_data.big_cty] as ref2 on data.c = ref2.prefix\n" +
+                "left join [sprstats-163301:reference_data.big_cty] as ref3 on data.d = ref3.prefix) group by country order by f0_ desc";
 
         TableResult result = bigQueryService.runQuery(queryString);
 

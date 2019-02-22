@@ -1,0 +1,97 @@
+[
+    {
+
+        "name":"uid",
+        "type":"INTEGER",
+        "mode":"REQUIRED",
+        "description":""
+    
+    },    {
+
+        "name":"value",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"timestamp",
+        "type":"TIMESTAMP",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"tweeted",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"numeric_val",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"rolling12",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"bz",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"bt",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"speed",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"bz2",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"bt2",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"speed2",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    }
+]

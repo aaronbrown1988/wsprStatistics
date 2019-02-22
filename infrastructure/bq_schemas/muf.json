@@ -1,0 +1,49 @@
+[
+    {
+
+        "name":"uid",
+        "type":"INTEGER",
+        "mode":"REQUIRED",
+        "description":""
+    
+    },    {
+
+        "name":"muf",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"maxspot",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"timestamp",
+        "type":"TIMESTAMP",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"sfi",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+
+        "name":"sunspots",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    }
+]
