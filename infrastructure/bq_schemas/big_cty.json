@@ -1,0 +1,17 @@
+[
+    {
+
+        "name":"country",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+    "name":"prefix",
+    "type":"STRING",
+    "mode":"NULLABLE",
+    "description":""
+
+}
+]

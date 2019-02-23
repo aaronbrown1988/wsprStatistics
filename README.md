@@ -6,7 +6,7 @@ A project manipulating historic wspr spots to produce interesting statistics and
 
 To run the project locally without tomcat run: 
     
-    mvn spring-boot:run
+    mvn appengine:devserver
     
 Alternatively a WAR file can be produced using
 

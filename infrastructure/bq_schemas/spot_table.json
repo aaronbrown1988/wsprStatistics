@@ -1,0 +1,107 @@
+[
+    {
+        "name":"spot_id",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"timestamp",
+        "type":"TIMESTAMP",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"reporter",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"reporter_grid",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"snr",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"frequency",
+        "type":"FLOAT",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"callsign",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"grid",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"power",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"drift",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"distance",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"azimuth",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"band",
+        "type":"INTEGER",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"version",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    },
+    {
+        "name":"code",
+        "type":"STRING",
+        "mode":"NULLABLE",
+        "description":""
+    
+    }
+]
