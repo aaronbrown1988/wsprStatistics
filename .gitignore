@@ -23,3 +23,6 @@ cloudFunction/node_modules
 .settings/*
 .project
 .classpath
+
+*.tfstate
+*.tfstate.backup

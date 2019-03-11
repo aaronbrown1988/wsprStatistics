@@ -23,8 +23,8 @@ public class BigQueryServiceIT {
     @Test
     public void runQuery() throws Exception {
         String queryString = "SELECT band,avg(distance), max(distance),min(distance),count(spot_id),variance(distance) " +
-                "FROM [dataproc-fun:wsprnet.all_wsprnet_data] " +
-                "where Call_Sign='M1GEO' group by band";
+                "FROM `wsprstats-163301.wspr_data.spot_table` " +
+                "where callsign='M1GEO' group by band";
 
         // Execute the query.
         TableResult result = bigQueryService.runQuery(queryString);

@@ -35,7 +35,7 @@ public class BigQueryService {
     public QueryJobConfiguration buildQuery(String queryString) {
 		QueryJobConfiguration queryRequest =
         QueryJobConfiguration.newBuilder(queryString)
-                        .setUseLegacySql(true)
+                        .setUseLegacySql(false)
                         .build();
 		return queryRequest;
 	}

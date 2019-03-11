@@ -25,7 +25,7 @@ public class CountryDAO {
     private static final Logger LOG = Logger.getLogger("CountryDao");
 
     public List<String> countryList() {
-        String queryString = "SELECT country,count(*) FROM [wsprstats-163301:callsign_country.big_cty]  group by country";
+        String queryString = "SELECT country,count(*) FROM `wsprstats-163301:reference_data.big_cty`  group by country";
 
         TableResult result = bigQueryService.runQuery(queryString);
 
@@ -42,7 +42,7 @@ public class CountryDAO {
 
     public Map<String,Double> bandForCountry(String tx, String rx) {
         //TODO determine the correct query for here
-        String queryString = "Select * from [wsprstats-163301]";
+        String queryString = "";
 
         return null;
     }
