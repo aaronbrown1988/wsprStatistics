@@ -2,6 +2,8 @@ package net.aaronbrown.wsprstatistics.controller;
 
 import net.aaronbrown.wsprstatistics.dao.SpotsDAO;
 import net.aaronbrown.wsprstatistics.services.CacheService;
+import net.aaronbrown.wsprstatistics.services.SpotLoadingService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -26,6 +29,9 @@ public class AppController {
     @Autowired
     private CacheService cacheService;
 
+    @Autowired
+    private SpotLoadingService spotLoadingService;
+
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping("/lastSpotTime")
     public
@@ -37,5 +43,18 @@ public class AppController {
             cacheService.putObjectWithExpiry("lastUpdatedDate", last, 604800);
         }
         return last;
+    }
+
+
+    @ResponseStatus(value = HttpStatus.OK)
+    @RequestMapping("/getLatest")
+    public
+    @ResponseBody Boolean getLast() {
+        try {
+            spotLoadingService.getSpots(LocalDate.now().minusMonths(1));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

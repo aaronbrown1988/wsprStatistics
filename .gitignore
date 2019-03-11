@@ -16,6 +16,7 @@ target/*
 .idea/*
 wsprStatistics.iml
 node_modules/*
+cloudFunction/node_modules
 
 #VScode things
 .vscode/*
