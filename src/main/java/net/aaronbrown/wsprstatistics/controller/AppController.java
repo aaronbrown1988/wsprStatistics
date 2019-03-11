@@ -4,6 +4,8 @@ import net.aaronbrown.wsprstatistics.dao.SpotsDAO;
 import net.aaronbrown.wsprstatistics.services.CacheService;
 import net.aaronbrown.wsprstatistics.services.SpotLoadingService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ import java.util.Date;
 @Controller
 @RequestMapping("/api")
 public class AppController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpotLoadingService.class);
+
 
     @Autowired
     private SpotsDAO spotsDAO;
@@ -54,6 +59,7 @@ public class AppController {
             spotLoadingService.getSpots(LocalDate.now().minusMonths(1));
             return true;
         } catch (Exception e) {
+            LOGGER.error("Failed to load spots: ", e);
             return false;
         }
     }

@@ -57,17 +57,17 @@ public class SpotLoadingService {
         if (con.getResponseCode() != 200 ) {
             throw new RuntimeException("Couldn't download "+ dataUrl+filename);
         }
+        LOGGER.info("Got %s for %s",con.getResponseCode(), obj.toString());
      
         // the inputstream is closed by default, so we don't need to close it here
         BlobInfo blobInfo =
             storage.create(
                 BlobInfo
                     .newBuilder(bucketName, filename)
-                    // Modify access list to allow all users with link to read file
-                    .setAcl(new ArrayList<>(Arrays.asList(Acl.of(User.ofAllUsers(), Role.READER))))
                     .build(),
                 con.getInputStream());
 
+        LOGGER.info("Uploaded to GCS successfully");
 
         bigQueryService.runLoadJob( bucketName,filename, "spot-data");
 
