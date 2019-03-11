@@ -1,5 +1,7 @@
 package net.aaronbrown.wsprstatistics.services;
 
+import java.time.LocalDate;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +24,6 @@ public class SpotLoadingServiceTest {
 
     @Test
     public void loadDataTest() throws Exception {
-        spotLoadingService.getSpots();
+        spotLoadingService.getSpots(LocalDate.now().minusMonths(1));
     }
 }
