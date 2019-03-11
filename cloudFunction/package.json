@@ -1,0 +1,15 @@
+{
+  "name": "wsprspotproxy",
+  "version": "1.0.0",
+  "description": "Saves a local copy of wspr spots before sending them on to wsprnet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aaron Brown VK3ABX/M0HUA",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/datastore": "^2.0.0",
+    "request": "^2.88.0"
+  }
+}
