@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { WaterfallComponent } from './waterfall.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('WaterfallComponent', () => {
   let component: WaterfallComponent;
@@ -8,7 +8,8 @@ describe('WaterfallComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WaterfallComponent ]
+      declarations: [ WaterfallComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

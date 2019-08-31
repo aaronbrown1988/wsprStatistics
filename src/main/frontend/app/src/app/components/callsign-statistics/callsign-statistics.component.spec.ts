@@ -1,5 +1,6 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {CallsignStatisticsComponent} from "./callsign-statistics.component";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { CallsignStatisticsComponent } from "./callsign-statistics.component";
+import { Component } from "@angular/core";
 
 describe('CallsignStatisticsComponent', () => {
   let component: CallsignStatisticsComponent;
@@ -7,7 +8,13 @@ describe('CallsignStatisticsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CallsignStatisticsComponent]
+      declarations: [
+        CallsignStatisticsComponent,
+        SearchStubComponent,
+        bandSelectStubComponent,
+        DistanceStubComponent,
+        CountryStubComponent
+      ]
     })
       .compileComponents();
   }));
@@ -22,3 +29,17 @@ describe('CallsignStatisticsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+@Component({ selector: 'search', template: '' })
+class SearchStubComponent { }
+
+@Component({ selector: 'country', template: '' })
+class CountryStubComponent { }
+
+@Component({ selector: 'distance', template: '' })
+class DistanceStubComponent { }
+
+
+@Component({ selector: 'band-select', template: '' })
+class bandSelectStubComponent { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecordRTCPromisesHandler} from 'recordrtc'
+
+import {Button} from 'primeng/button'
+import { WaterfallService } from 'app/services/waterfall.service';
 
 @Component({
   selector: 'app-waterfall',
@@ -8,21 +10,15 @@ import { RecordRTCPromisesHandler} from 'recordrtc'
 })
 export class WaterfallComponent implements OnInit {
 
-  constructor() {
+  constructor(waterFallService: WaterfallService) {
    
    }
 
   async ngOnInit() {
-    await initAudioRecorder();
   }
 
   
 
 }
-async function initAudioRecorder() {
-  let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-  let recorder = new RecordRTCPromisesHandler(stream, {
-    type: 'video'
-  });
-}
+
 

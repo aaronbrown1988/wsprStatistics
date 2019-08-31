@@ -1,6 +1,6 @@
 import {DistanceData} from "../models/distanceData";
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable, Subscription} from "rxjs";
 import {SearchParamService} from "./searchParam.service";
 import {Logger} from "./logger.service";
@@ -15,7 +15,7 @@ export class DistanceService {
   subscription: Subscription;
 
 
-  constructor(private http: Http, private searchParamService: SearchParamService, private logger: Logger) {
+  constructor(private http: HttpClient, private searchParamService: SearchParamService, private logger: Logger) {
     this.subscription = this.searchParamService.update$.subscribe(
       callsign => {
         this.getDistance(callsign)
@@ -32,8 +32,8 @@ export class DistanceService {
 
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
+  private extractData(res: HttpResponse<any>) {
+    let body = res.body;
     return body.data || body || {};
   }
 

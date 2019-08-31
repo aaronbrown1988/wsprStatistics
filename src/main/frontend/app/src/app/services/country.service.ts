@@ -2,7 +2,7 @@
  * Created by aaron on 27/05/17.
  */
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable, Subscription} from "rxjs";
 import {map} from "rxjs/operators"
 import {SearchParamService} from "./searchParam.service";
@@ -17,7 +17,7 @@ export class CountryService {
   subscription: Subscription;
 
 
-  constructor(private http: Http, private callsignService: SearchParamService, private logger: Logger) {
+  constructor(private http: HttpClient, private callsignService: SearchParamService, private logger: Logger) {
     this.subscription = this.callsignService.update$.subscribe(
       update => {
         this.getCountries(update)
@@ -47,8 +47,8 @@ export class CountryService {
     return this.http.get(this.countryUrl + '/list').pipe(map(this.extractData))
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
+  private extractData(res: any) {
+    let body = res;
     return body.data || body || {};
   }
 

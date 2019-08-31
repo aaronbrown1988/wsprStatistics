@@ -7,5 +7,5 @@ import {Component} from "@angular/core";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'My First Angular 4 App';
+  title = 'Wspr Dashboard';
 }
