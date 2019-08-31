@@ -21,6 +21,7 @@ import {CountryStatisticsComponent} from "./components/country-statistics/countr
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {DistanceGraphComponent} from "./components/cards/distance-graph/distance-graph.component";
 import {BandSelectComponent} from "./components/band-select/band-select.component";
+import { WaterfallComponent } from './components/waterfall/waterfall.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {BandSelectComponent} from "./components/band-select/band-select.componen
     CountryStatisticsComponent,
     SidebarComponent,
     DistanceGraphComponent,
-    BandSelectComponent
+    BandSelectComponent,
+    WaterfallComponent
   ],
   imports: [
     BrowserModule,
