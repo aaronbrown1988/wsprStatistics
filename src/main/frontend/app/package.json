@@ -25,6 +25,7 @@
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "core-js": "^3.2.1",
+    "fft-js": "0.0.12",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^5.1.1",
     "primeng": "^8.0.2",
